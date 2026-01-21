@@ -17,19 +17,56 @@ You want to buy a token on Base using SOL. Here's what that looks like:
 
 **30+ minutes, multiple transactions, and you're still not sure if you got a good rate.**
 
+<Frame>
+```mermaid
+flowchart LR
+    A[Your SOL] --> B[Find Bridge]
+    B --> C[Bridge TX]
+    C --> D[Wait...]
+    D --> E[Wrapped Tokens]
+    E --> F[Swap to Native]
+    F --> G[Finally Trade]
+
+    style A fill:#3D39A7,color:#fff
+    style G fill:#ef4444,color:#fff
+```
+</Frame>
+
 ## Omnera Warp: Just Say What You Want
 
-With Warp, you express your intent:
+With Warp, you express your **intent** — and we handle the rest.
+
+<Note>
+**What's an intent?** An intent is simply what you want to happen, without worrying about how it gets done. Instead of manually bridging, swapping, and executing, you just say: *"Swap 10 SOL for ETH on Ethereum"* — and Warp figures out the best way to make it happen.
+</Note>
 
 > *"Buy $500 of TOKEN on Base using my SOL"*
 
-Warp handles everything else. One signature. No bridges. No wrapped tokens. No complexity.
+One signature. No bridges. No wrapped tokens. No complexity.
 
 <Info>
   **Target Launch**: Q2-Q3 2026
 </Info>
 
-## How It Works
+## How Warp Works
+
+<Frame>
+```mermaid
+flowchart LR
+    subgraph "Omnera Warp"
+        A[Express Intent] --> B[Solvers Compete]
+        B --> C[Best Route Found]
+        C --> D[One Signature]
+        D --> E[Atomic Execution]
+    end
+
+    style A fill:#3D39A7,color:#fff
+    style B fill:#151236,color:#fff
+    style C fill:#151236,color:#fff
+    style D fill:#151236,color:#fff
+    style E fill:#3D39A7,color:#fff
+```
+</Frame>
 
 <CardGroup cols={2}>
   <Card title="Intent-Based" icon="wand-magic-sparkles">
@@ -46,22 +83,49 @@ Warp handles everything else. One signature. No bridges. No wrapped tokens. No c
   </Card>
 </CardGroup>
 
+## The Warp Flow
+
+<Frame>
+```mermaid
+sequenceDiagram
+    participant You
+    participant Omnera as Omnera Warp
+    participant Solvers as Solver Network
+    participant Dest as Destination Chain
+
+    You->>Omnera: "Swap 10 SOL for ETH on Ethereum"
+    Note over Omnera: Intent received
+    Omnera->>Solvers: Broadcast intent
+    Solvers->>Solvers: Compete for best rate
+    Solvers->>Omnera: Winning quote
+    Omnera->>You: Sign once on Solana
+    You->>Omnera: Signature
+    Omnera->>Dest: Atomic execution
+    Dest->>You: ETH arrives in your wallet
+    Note over You: Done. No bridges. No wrapped tokens.
+```
+</Frame>
+
 <Steps>
   <Step title="Express Your Intent">
-    *"Swap 10 SOL for ETH on Ethereum"* or *"Buy TOKEN on Arbitrum using USDC on Solana"*
+    Tell Warp what you want in plain terms: *"Swap 10 SOL for ETH on Ethereum"* or *"Buy TOKEN on Arbitrum using USDC on Solana"*
   </Step>
-  <Step title="Warp Finds the Path">
-    Our solver network competes to find you the best execution across all available routes.
+  <Step title="Solvers Compete">
+    Our decentralized solver network competes to find you the best execution across all available routes. Competition = better rates for you.
   </Step>
   <Step title="One Signature">
-    Sign once on Solana. That's it.
+    Sign once on Solana. That's it. No multi-step approvals, no chain switching.
   </Step>
-  <Step title="Execution">
-    Your intent executes atomically. Either it all happens, or none of it does. No stuck funds.
+  <Step title="Atomic Execution">
+    Your intent executes atomically. Either it all happens, or none of it does. No stuck funds, no partial fills.
   </Step>
 </Steps>
 
-## Supported Chains (Planned)
+## Planned Chain Support
+
+<Warning>
+  Omnera Warp is on our roadmap for Q2-Q3 2026. The chains below are planned for launch — not currently available.
+</Warning>
 
 | Chain | Launch Status |
 |-------|---------------|
@@ -85,28 +149,25 @@ Bridges have lost billions to hacks. Warp's architecture eliminates the traditio
 
 ## Example Intents
 
-```
-"Swap all my SOL for ETH on Ethereum"
-→ Warp finds best rate, executes atomically
+Here's what trading with intents looks like:
 
-"Buy 1000 USDC worth of DEGEN on Base"
-→ SOL → execution → DEGEN, one signature
-
-"Move my portfolio to Arbitrum"
-→ All assets converted and transferred optimally
-```
+| You Say | Warp Does |
+|---------|-----------|
+| *"Swap all my SOL for ETH on Ethereum"* | Finds best rate, executes atomically |
+| *"Buy 1000 USDC worth of DEGEN on Base"* | SOL → execution → DEGEN, one signature |
+| *"Move my portfolio to Arbitrum"* | All assets converted and transferred optimally |
 
 ## Technical Architecture
 
 <AccordionGroup>
   <Accordion title="Solver Network" icon="network-wired">
-    Decentralized solvers compete to fill your intent. Competition = better rates for you.
+    Decentralized solvers compete to fill your intent. They stake collateral and are slashed for failed executions. Competition drives better rates; skin in the game ensures reliability.
   </Accordion>
   <Accordion title="Atomic Execution" icon="atom">
-    Intents either fully complete or fully revert. No partial fills, no stuck funds.
+    Intents either fully complete or fully revert. The solver doesn't get paid unless you get exactly what you asked for. No partial fills, no stuck funds.
   </Accordion>
   <Accordion title="No Custody" icon="key">
-    Warp never holds your assets. Execution happens through smart contracts, not custody.
+    Warp never holds your assets. Execution happens through smart contracts with cryptographic guarantees, not trust in a third party.
   </Accordion>
 </AccordionGroup>
 

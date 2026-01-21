@@ -11,9 +11,40 @@ Open DEXScreener. Check the contract on RugCheck. Look up the creator wallet. Sc
 
 **60-180 seconds later**, you've got 6+ tabs open and the token already moved. Or worse — you FOMO'd in with zero context and got burned.
 
+<Frame>
+```mermaid
+flowchart LR
+    A[Find Token] --> B[DEXScreener]
+    A --> C[RugCheck]
+    A --> D[Solscan]
+    A --> E[Twitter]
+    A --> F[Telegram]
+    B & C & D & E & F --> G[60-180 seconds]
+    G --> H[Token Already Moved]
+
+    style A fill:#3D39A7,color:#fff
+    style G fill:#ef4444,color:#fff
+    style H fill:#ef4444,color:#fff
+```
+</Frame>
+
 ## The Solution
 
 Omnera gives you everything in under 3 seconds:
+
+<Frame>
+```mermaid
+flowchart LR
+    A[Find Token] --> B[Paste in Omnera]
+    B --> C[Complete Analysis]
+    C --> D[Make Decision]
+
+    style A fill:#3D39A7,color:#fff
+    style B fill:#151236,color:#fff
+    style C fill:#151236,color:#fff
+    style D fill:#3D39A7,color:#fff
+```
+</Frame>
 
 <CardGroup cols={2}>
   <Card title="Contract Safety" icon="shield-check">
@@ -41,6 +72,25 @@ Omnera gives you everything in under 3 seconds:
 Here's where it gets powerful.
 
 Token Intelligence doesn't just analyze tokens — **it learns how you trade.**
+
+<Frame>
+```mermaid
+flowchart LR
+    subgraph "Your Trading Loop"
+        A[You Trade] --> B[AI Observes]
+        B --> C[Patterns Identified]
+        C --> D[Personalized Insights]
+        D --> E[Better Opportunities]
+        E --> A
+    end
+
+    style A fill:#3D39A7,color:#fff
+    style B fill:#151236,color:#fff
+    style C fill:#151236,color:#fff
+    style D fill:#151236,color:#fff
+    style E fill:#3D39A7,color:#fff
+```
+</Frame>
 
 <Steps>
   <Step title="It Watches Your Patterns">
