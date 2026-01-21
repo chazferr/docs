@@ -1,0 +1,144 @@
+---
+title: "Warp SDK"
+description: "B2B SDK for integrating Omnera Warp cross-chain capabilities"
+---
+
+## Overview
+
+The Warp SDK enables partners to integrate Omnera Warp's intent-based cross-chain capabilities directly into their applications. Offer your users seamless multi-chain trading without building bridge infrastructure yourself.
+
+<Info>
+  **Target Launch**: 2026 (Following Warp launch)
+</Info>
+
+## Why Integrate Warp?
+
+<CardGroup cols={2}>
+  <Card title="Multi-Chain Access" icon="link">
+    Let your users access assets on any supported chain from a single interface.
+  </Card>
+  <Card title="No Infrastructure" icon="server">
+    Skip building and maintaining bridge integrations. We handle the complexity.
+  </Card>
+  <Card title="MEV Protection" icon="shield">
+    Your users get Omnera's Private Execution protection on all cross-chain trades.
+  </Card>
+  <Card title="Revenue Share" icon="coins">
+    Earn a share of protocol fees for trades routed through your integration.
+  </Card>
+</CardGroup>
+
+## SDK Features
+
+### Core Capabilities
+
+| Feature | Description |
+|---------|-------------|
+| Intent Submission | Submit cross-chain intents on behalf of users |
+| Quote Aggregation | Get real-time quotes across all available routes |
+| Status Tracking | Monitor intent execution status in real-time |
+| Webhook Support | Receive callbacks on intent completion |
+
+### Developer Experience
+
+- **TypeScript/JavaScript SDK** with full type definitions
+- **REST API** for server-side integrations
+- **React Hooks** for frontend applications
+- **Comprehensive documentation** and examples
+
+## Integration Examples
+
+### Basic Quote Request
+
+```typescript
+import { WarpSDK } from '@omnera/warp-sdk';
+
+const warp = new WarpSDK({ apiKey: 'your-api-key' });
+
+const quote = await warp.getQuote({
+  sourceChain: 'solana',
+  sourceToken: 'SOL',
+  destChain: 'ethereum',
+  destToken: 'ETH',
+  amount: '1000000000' // 1 SOL in lamports
+});
+
+console.log(quote.expectedOutput); // ETH amount
+console.log(quote.routes); // Available execution paths
+```
+
+### Submit Intent
+
+```typescript
+const intent = await warp.submitIntent({
+  quote: quote.id,
+  userAddress: 'user-wallet-address',
+  slippageTolerance: 0.5 // 0.5%
+});
+
+// Track execution
+const status = await warp.getIntentStatus(intent.id);
+```
+
+### React Hook
+
+```typescript
+import { useWarpQuote } from '@omnera/warp-sdk/react';
+
+function SwapWidget() {
+  const { quote, loading, error } = useWarpQuote({
+    sourceChain: 'solana',
+    sourceToken: 'SOL',
+    destChain: 'base',
+    destToken: 'USDC',
+    amount: inputAmount
+  });
+
+  return (
+    <div>
+      {loading && <Spinner />}
+      {quote && <QuoteDisplay quote={quote} />}
+    </div>
+  );
+}
+```
+
+## Use Cases
+
+<AccordionGroup>
+  <Accordion title="DEX Aggregators" icon="shuffle">
+    Expand your DEX to support cross-chain swaps with a single integration.
+  </Accordion>
+  <Accordion title="Wallets" icon="wallet">
+    Let users manage and trade assets across chains from your wallet interface.
+  </Accordion>
+  <Accordion title="DeFi Protocols" icon="landmark">
+    Enable cross-chain deposits, withdrawals, and yield strategies.
+  </Accordion>
+  <Accordion title="NFT Marketplaces" icon="image">
+    Allow purchases using assets from any supported chain.
+  </Accordion>
+</AccordionGroup>
+
+## Partnership Tiers
+
+| Tier | Volume | Revenue Share | Support |
+|------|--------|---------------|---------|
+| Standard | < $1M/month | 10% | Documentation |
+| Pro | $1-10M/month | 15% | Dedicated support |
+| Enterprise | > $10M/month | Custom | Custom integration |
+
+## Get Early Access
+
+We're working with select partners for early SDK access.
+
+<Card title="Apply for Partnership" icon="handshake" href="mailto:partnerships@omnera.trade">
+  Contact us to discuss integration opportunities.
+</Card>
+
+## Coming Soon
+
+- Full API documentation
+- SDK package installation
+- Sandbox environment for testing
+- Integration guides and tutorials

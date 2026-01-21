@@ -1,0 +1,112 @@
+---
+title: "AI Backtester"
+description: "Test strategies against real historical data with realistic conditions"
+---
+
+## Overview
+
+The AI Backtester lets you validate your trading strategies against real historical market data. Unlike other backtesting tools, Omnera includes realistic slippage, failed transactions, and yes—even rug pulls—to give you an accurate picture of how your strategy would actually perform.
+
+<Warning>
+  Past performance does not guarantee future results. Use backtesting as one tool in your decision-making process, not as the sole basis for trading.
+</Warning>
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Real Historical Data" icon="database">
+    Test against actual on-chain data, not simulated or cleaned datasets.
+  </Card>
+  <Card title="Realistic Slippage" icon="chart-line">
+    Slippage is calculated based on actual liquidity conditions at each point in time.
+  </Card>
+  <Card title="Rug Pull Inclusion" icon="bomb">
+    Failed tokens and rug pulls are included, showing you the real risks you would have faced.
+  </Card>
+  <Card title="MEV Simulation" icon="robot">
+    Optional MEV impact simulation to understand how bots would have affected your trades.
+  </Card>
+</CardGroup>
+
+## Creating a Backtest
+
+### Step 1: Define Your Strategy
+
+Configure your trading strategy parameters:
+
+```
+Strategy Parameters:
+- Entry conditions (price, volume, holder metrics, etc.)
+- Exit conditions (take profit, stop loss, time-based)
+- Position sizing rules
+- Maximum concurrent positions
+```
+
+### Step 2: Set the Time Period
+
+Choose your backtest period:
+
+| Period | Best For |
+|--------|----------|
+| 7 days | Quick validation of recent strategies |
+| 30 days | Standard testing with varied market conditions |
+| 90 days | Comprehensive testing across market cycles |
+| Custom | Specific event or time period analysis |
+
+### Step 3: Configure Realism Settings
+
+<AccordionGroup>
+  <Accordion title="Slippage Model" icon="sliders">
+    - **Optimistic**: Minimal slippage (not recommended)
+    - **Realistic**: Calculated from actual pool depth (recommended)
+    - **Pessimistic**: Higher slippage for conservative estimates
+  </Accordion>
+  <Accordion title="Include Rugs" icon="skull">
+    Toggle whether to include tokens that were later rugged. We recommend keeping this ON for accurate results.
+  </Accordion>
+  <Accordion title="MEV Impact" icon="robot">
+    Simulate how MEV bots would have affected your entries and exits.
+  </Accordion>
+</AccordionGroup>
+
+### Step 4: Run and Analyze
+
+After running your backtest, you'll receive:
+
+- **Total Return**: Net profit/loss percentage
+- **Win Rate**: Percentage of profitable trades
+- **Max Drawdown**: Largest peak-to-trough decline
+- **Sharpe Ratio**: Risk-adjusted return metric
+- **Trade Log**: Detailed breakdown of every trade
+
+## Interpreting Results
+
+<Tip>
+  Focus on risk-adjusted metrics like Sharpe ratio and max drawdown, not just total return.
+</Tip>
+
+### Key Metrics Explained
+
+| Metric | What It Means | Target |
+|--------|---------------|--------|
+| Win Rate | Percentage of winning trades | > 40% for most strategies |
+| Avg Win/Loss | Ratio of average win to average loss | > 2.0 |
+| Max Drawdown | Worst decline from peak | < 30% |
+| Sharpe Ratio | Return per unit of risk | > 1.0 |
+
+## Strategy Templates
+
+Get started quickly with pre-built strategy templates:
+
+- **Momentum Hunter**: Enter on volume spikes, exit on momentum loss
+- **Holder Watcher**: Trade based on holder distribution changes
+- **Liquidity Sniper**: Enter when liquidity conditions are favorable
+- **Social Surge**: Trade on social signal increases
+
+## Best Practices
+
+1. **Test multiple time periods**: Don't optimize for a single period
+2. **Use realistic settings**: Optimistic slippage gives false confidence
+3. **Include rugs**: Your real trading will encounter them
+4. **Walk-forward test**: Validate on out-of-sample data
+5. **Size appropriately**: Backtest with position sizes you'd actually use

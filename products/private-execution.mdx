@@ -1,0 +1,112 @@
+---
+title: "Private Execution"
+description: "MEV-protected trading for safe transaction execution"
+---
+
+## Overview
+
+Private Execution is Omnera's MEV protection layer that shields your trades from sandwich attacks, front-running, and other forms of value extraction. When you trade with Private Execution enabled, your transactions are routed through protected channels to ensure you get the price you expect.
+
+<Info>
+  MEV (Maximal Extractable Value) costs Solana traders millions in value extraction every month. Private Execution helps you keep more of your profits.
+</Info>
+
+## What is MEV?
+
+MEV refers to the profit that can be extracted from users by reordering, inserting, or censoring transactions. Common MEV attacks include:
+
+<CardGroup cols={2}>
+  <Card title="Sandwich Attacks" icon="burger">
+    Bots detect your pending trade and place orders before and after yours, profiting from the price impact.
+  </Card>
+  <Card title="Front-Running" icon="person-running">
+    Bots copy your trade and execute it before you, taking the opportunity you identified.
+  </Card>
+  <Card title="Back-Running" icon="arrow-right">
+    Bots place trades immediately after yours to capture arbitrage opportunities you created.
+  </Card>
+  <Card title="JIT Liquidity" icon="clock">
+    Just-in-time liquidity that extracts value from your swap through precise timing.
+  </Card>
+</CardGroup>
+
+## How Private Execution Works
+
+<Steps>
+  <Step title="Transaction Submission">
+    When you submit a trade with Private Execution enabled, your transaction is encrypted and sent to our protected mempool.
+  </Step>
+  <Step title="Private Routing">
+    Your transaction is routed directly to block builders who commit to not extracting MEV from protected transactions.
+  </Step>
+  <Step title="Execution">
+    Your trade executes at the expected price without interference from MEV bots.
+  </Step>
+  <Step title="Confirmation">
+    You receive confirmation with the actual execution price matching your quoted price.
+  </Step>
+</Steps>
+
+## Enabling Private Execution
+
+### In the Trading Interface
+
+1. Navigate to any swap or trade interface
+2. Look for the "Private Execution" toggle
+3. Enable it before submitting your transaction
+
+### Default Settings
+
+You can set Private Execution as your default in Settings:
+
+1. Go to Settings > Trading Preferences
+2. Enable "Always use Private Execution"
+3. Save your preferences
+
+## Protection Levels
+
+<AccordionGroup>
+  <Accordion title="Standard Protection" icon="shield">
+    Protects against common sandwich attacks and front-running. Suitable for most trades.
+  </Accordion>
+  <Accordion title="Enhanced Protection" icon="shield-check">
+    Additional protections for larger trades including timing randomization and split execution.
+  </Accordion>
+</AccordionGroup>
+
+## When to Use Private Execution
+
+<Tip>
+  We recommend using Private Execution for all trades, but it's especially important for larger positions.
+</Tip>
+
+| Trade Size | Recommendation |
+|------------|----------------|
+| < 1 SOL | Optional but recommended |
+| 1-10 SOL | Strongly recommended |
+| > 10 SOL | Essential |
+
+## Performance Impact
+
+Private Execution adds minimal latency to your transactions:
+
+- **Additional latency**: ~50-100ms
+- **Success rate**: Comparable to standard execution
+- **Cost**: Included in standard trading fees
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="Does Private Execution guarantee my trade will succeed?">
+    No. Private Execution protects against MEV extraction but cannot prevent failed transactions due to insufficient liquidity, slippage tolerance, or other factors.
+  </Accordion>
+  <Accordion title="Is there an additional fee for Private Execution?">
+    Private Execution is included in Omnera's standard trading fees at no additional cost.
+  </Accordion>
+  <Accordion title="Can I use Private Execution with limit orders?">
+    Yes, all order types support Private Execution.
+  </Accordion>
+  <Accordion title="How do I know my trade was protected?">
+    Protected trades are marked with a shield icon in your transaction history, and you can view the MEV protection details in the transaction receipt.
+  </Accordion>
+</AccordionGroup>

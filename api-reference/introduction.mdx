@@ -1,33 +1,108 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'API Introduction'
+description: 'Programmatic access to Omnera trading and intelligence features'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Overview
 
-## Welcome
+The Omnera API provides programmatic access to our trading platform, including Token Intelligence, trade execution, and portfolio management.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+<Warning>
+  The Omnera API is currently in private beta. Contact us to request access.
+</Warning>
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+## Base URL
+
+```
+https://api.omnera.trade/v1
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+All API requests require authentication via Bearer token. Include your API key in the `Authorization` header:
+
+```bash
+curl https://api.omnera.trade/v1/tokens/analyze \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Keep your API key secure. Never expose it in client-side code or public repositories.
+</Note>
+
+## Rate Limits
+
+| Tier | Requests/min | Requests/day |
+|------|--------------|--------------|
+| Free | 10 | 100 |
+| Pro | 100 | 10,000 |
+| Enterprise | Custom | Custom |
+
+## Available Endpoints
+
+<CardGroup cols={2}>
+  <Card title="Token Intelligence" icon="brain" href="/api-reference/endpoint/get">
+    Get AI-generated token analysis and risk scores.
+  </Card>
+  <Card title="Trade Execution" icon="arrow-right-arrow-left" href="/api-reference/endpoint/create">
+    Execute trades with optional MEV protection.
+  </Card>
+  <Card title="Portfolio" icon="chart-pie" href="/api-reference/endpoint/get">
+    Retrieve wallet balances and positions.
+  </Card>
+  <Card title="Webhooks" icon="webhook" href="/api-reference/endpoint/webhook">
+    Receive real-time notifications for trades and alerts.
+  </Card>
+</CardGroup>
+
+## Response Format
+
+All responses are returned in JSON format:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
+{
+  "success": true,
+  "data": {
+    // Response data
+  },
+  "meta": {
+    "requestId": "req_123abc",
+    "timestamp": 1704067200
   }
-]
+}
 ```
+
+## Error Handling
+
+Errors return appropriate HTTP status codes with details:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_TOKEN_ADDRESS",
+    "message": "The provided token address is not valid"
+  }
+}
+```
+
+| Status Code | Description |
+|-------------|-------------|
+| 400 | Bad Request - Invalid parameters |
+| 401 | Unauthorized - Invalid or missing API key |
+| 429 | Rate Limited - Too many requests |
+| 500 | Server Error - Something went wrong |
+
+## SDKs
+
+Official SDKs are coming soon:
+
+- TypeScript/JavaScript
+- Python
+- Rust
+
+## Request API Access
+
+<Card title="Join the Waitlist" icon="key" href="mailto:api@omnera.trade">
+  Contact us to request API access for your application.
+</Card>

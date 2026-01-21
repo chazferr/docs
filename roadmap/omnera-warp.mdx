@@ -1,0 +1,105 @@
+---
+title: "Omnera Warp"
+description: "Intent-based cross-chain protocol for seamless multi-chain trading"
+---
+
+## Overview
+
+Omnera Warp is our intent-based cross-chain protocol that enables seamless trading across multiple blockchains. Express what you want to do, and Warp handles the complexity of cross-chain execution.
+
+<Info>
+  **Target Launch**: Q2-Q3 2026
+</Info>
+
+## The Problem
+
+Cross-chain trading today is fragmented and complex:
+
+- Multiple bridges with different trust assumptions
+- Gas tokens needed on every chain
+- Failed transactions and stuck funds
+- MEV extraction during bridging
+
+## The Warp Solution
+
+<CardGroup cols={2}>
+  <Card title="Intent-Based" icon="wand-magic-sparkles">
+    Express your desired outcome, not the execution path. Warp finds the optimal route.
+  </Card>
+  <Card title="Single Signature" icon="signature">
+    One transaction on your source chain executes the entire cross-chain operation.
+  </Card>
+  <Card title="MEV Protected" icon="shield">
+    Private Execution technology extended to cross-chain trades.
+  </Card>
+  <Card title="No Bridging Required" icon="bridge">
+    Trade directly without manually bridging assets first.
+  </Card>
+</CardGroup>
+
+## How It Works
+
+<Steps>
+  <Step title="Express Intent">
+    Specify what you want: "Swap 1 SOL for ETH on Ethereum" or "Buy TOKEN on Base using USDC on Solana"
+  </Step>
+  <Step title="Route Discovery">
+    Warp's solver network finds the optimal execution path across chains.
+  </Step>
+  <Step title="Single Transaction">
+    Sign one transaction on Solana. Warp handles everything else.
+  </Step>
+  <Step title="Guaranteed Execution">
+    Either your entire intent executes successfully, or nothing happens. No stuck funds.
+  </Step>
+</Steps>
+
+## Supported Chains (Planned)
+
+| Chain | Status |
+|-------|--------|
+| Solana | Primary (Launch) |
+| Ethereum | Launch |
+| Base | Launch |
+| Arbitrum | Launch |
+| Additional L2s | Post-launch |
+
+## Intent Examples
+
+```
+Intent: Swap 10 SOL for maximum ETH on Ethereum
+Result: Warp finds the best rate across all available paths
+
+Intent: Buy 1000 USDC of TOKEN on Base using SOL
+Result: SOL → USDC → Bridge → TOKEN, all in one signature
+
+Intent: Move my portfolio from Ethereum to Solana
+Result: All assets converted and bridged optimally
+```
+
+## Technical Architecture
+
+<AccordionGroup>
+  <Accordion title="Solver Network" icon="network-wired">
+    Decentralized network of solvers competing to fill user intents at the best rates.
+  </Accordion>
+  <Accordion title="Escrow System" icon="lock">
+    Secure escrow ensures solvers fulfill intents correctly before receiving payment.
+  </Accordion>
+  <Accordion title="Oracle Integration" icon="eye">
+    Real-time price feeds ensure accurate execution across chains.
+  </Accordion>
+  <Accordion title="Fallback Mechanisms" icon="rotate">
+    Automatic fallbacks if primary routes fail, ensuring intent completion.
+  </Accordion>
+</AccordionGroup>
+
+## For Developers
+
+Interested in building on Warp? Check out the [Warp SDK](/roadmap/warp-sdk) for integration details.
+
+## Stay Updated
+
+<Card title="Join the Waitlist" icon="list" href="https://omnera.trade/warp-waitlist">
+  Be first to know when Omnera Warp launches.
+</Card>
