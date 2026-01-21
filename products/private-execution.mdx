@@ -37,24 +37,6 @@ Every trade routed through Omnera is MEV-protected.
 
 ## How It Works
 
-<Frame>
-```mermaid
-flowchart LR
-    subgraph "Private Execution"
-        A[You Submit Trade] --> B[Encrypted Transaction]
-        B --> C[Protected Validators]
-        C --> D[Trade Executes]
-        D --> E[You Get Expected Price]
-    end
-
-    style A fill:#3D39A7,color:#fff
-    style B fill:#151236,color:#fff
-    style C fill:#151236,color:#fff
-    style D fill:#151236,color:#fff
-    style E fill:#3D39A7,color:#fff
-```
-</Frame>
-
 <Steps>
   <Step title="You Submit a Trade">
     Buy or sell through Omnera's interface.
@@ -96,67 +78,34 @@ These percentages add up. Over a month of active trading, MEV can eat a signific
 
 A sandwich attack wraps your trade between two bot transactions to extract value:
 
-<Frame>
-```mermaid
-sequenceDiagram
-    participant You
-    participant Mempool
-    participant Bot
-    participant DEX
-
-    You->>Mempool: Submit buy for 5 SOL of TOKEN
-    Bot->>Mempool: Sees your pending tx
-    Bot->>DEX: Buys TOKEN first (front-run)
-    Note over DEX: Price increases
-    You->>DEX: Your buy executes at higher price
-    Bot->>DEX: Sells TOKEN into your buy
-    Note over Bot: Bot profits from the spread
-    Note over You: You overpaid
-```
-</Frame>
+1. You submit a buy order to the mempool
+2. Bot sees your pending transaction
+3. Bot buys the token first, pushing the price up
+4. Your trade executes at the higher price
+5. Bot sells into your buy, profiting from the spread
+6. You overpaid — the bot extracted value from your trade
 
 ### Front-Running
 
 Front-running is when a bot copies your trade and executes it before you:
 
-<Frame>
-```mermaid
-sequenceDiagram
-    participant You
-    participant Mempool
-    participant Bot
-    participant DEX
-
-    You->>Mempool: Submit buy for new token
-    Bot->>Mempool: Sees your tx, copies it
-    Bot->>DEX: Executes same trade first
-    Note over DEX: Price moves
-    You->>DEX: Get worse price or tx fails
-    Note over Bot: Bot captured your alpha
-```
-</Frame>
+1. You submit a buy order for a promising token
+2. Bot sees your transaction in the mempool
+3. Bot copies your trade and executes it first
+4. The price moves against you
+5. Your trade either fails or executes at a worse price
+6. The bot captured your alpha
 
 ## How Private Execution Protects You
 
 With Omnera, your transaction never enters the public mempool where bots can see it:
 
-<Frame>
-```mermaid
-sequenceDiagram
-    participant You
-    participant Omnera
-    participant Validators as Protected Validators
-    participant DEX
-
-    You->>Omnera: Submit buy for 5 SOL of TOKEN
-    Omnera->>Omnera: Encrypt transaction
-    Omnera->>Validators: Send via private channel
-    Note over Validators: Bots can't see this
-    Validators->>DEX: Execute trade
-    DEX->>You: You get expected price
-    Note over You: No MEV extracted
-```
-</Frame>
+1. You submit your trade through Omnera
+2. Your transaction is encrypted
+3. It's sent directly to protected validators via private channels
+4. Bots never see your transaction
+5. Your trade executes at the expected price
+6. No MEV extracted — you keep the value
 
 ## FAQ
 

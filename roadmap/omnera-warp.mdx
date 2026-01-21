@@ -17,21 +17,6 @@ You want to buy a token on Base using SOL. Here's what that looks like:
 
 **30+ minutes, multiple transactions, and you're still not sure if you got a good rate.**
 
-<Frame>
-```mermaid
-flowchart LR
-    A[Your SOL] --> B[Find Bridge]
-    B --> C[Bridge TX]
-    C --> D[Wait...]
-    D --> E[Wrapped Tokens]
-    E --> F[Swap to Native]
-    F --> G[Finally Trade]
-
-    style A fill:#3D39A7,color:#fff
-    style G fill:#ef4444,color:#fff
-```
-</Frame>
-
 ## Omnera Warp: Just Say What You Want
 
 With Warp, you express your **intent** — and we handle the rest.
@@ -50,24 +35,6 @@ One signature. No bridges. No wrapped tokens. No complexity.
 
 ## How Warp Works
 
-<Frame>
-```mermaid
-flowchart LR
-    subgraph "Omnera Warp"
-        A[Express Intent] --> B[Solvers Compete]
-        B --> C[Best Route Found]
-        C --> D[One Signature]
-        D --> E[Atomic Execution]
-    end
-
-    style A fill:#3D39A7,color:#fff
-    style B fill:#151236,color:#fff
-    style C fill:#151236,color:#fff
-    style D fill:#151236,color:#fff
-    style E fill:#3D39A7,color:#fff
-```
-</Frame>
-
 <CardGroup cols={2}>
   <Card title="Intent-Based" icon="wand-magic-sparkles">
     Tell Omnera what you want. Not how to do it.
@@ -84,27 +51,6 @@ flowchart LR
 </CardGroup>
 
 ## The Warp Flow
-
-<Frame>
-```mermaid
-sequenceDiagram
-    participant You
-    participant Omnera as Omnera Warp
-    participant Solvers as Solver Network
-    participant Dest as Destination Chain
-
-    You->>Omnera: "Swap 10 SOL for ETH on Ethereum"
-    Note over Omnera: Intent received
-    Omnera->>Solvers: Broadcast intent
-    Solvers->>Solvers: Compete for best rate
-    Solvers->>Omnera: Winning quote
-    Omnera->>You: Sign once on Solana
-    You->>Omnera: Signature
-    Omnera->>Dest: Atomic execution
-    Dest->>You: ETH arrives in your wallet
-    Note over You: Done. No bridges. No wrapped tokens.
-```
-</Frame>
 
 <Steps>
   <Step title="Express Your Intent">

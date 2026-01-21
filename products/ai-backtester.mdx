@@ -16,24 +16,6 @@ But does it actually work? You won't know until you've lost real money finding o
 
 Run your exact filters and rules against **real Solana data** from the last 7-30 days. Not cleaned-up data. Not survivorship-biased data. Real data — with realistic slippage, rug pulls included, and all the chaos of actual meme coin markets.
 
-<Frame>
-```mermaid
-flowchart LR
-    A[Your Strategy] --> B[Real Solana Data]
-    B --> C[Simulate Trades]
-    C --> D[Include Rugs & Failures]
-    D --> E[AI Analysis]
-    E --> F[Actionable Insights]
-
-    style A fill:#3D39A7,color:#fff
-    style B fill:#151236,color:#fff
-    style C fill:#151236,color:#fff
-    style D fill:#151236,color:#fff
-    style E fill:#151236,color:#fff
-    style F fill:#3D39A7,color:#fff
-```
-</Frame>
-
 <Info>
   Most backtesting tools quietly remove rugged tokens from their data. Omnera includes them — because you would have traded them too.
 </Info>
@@ -148,28 +130,6 @@ The AI helps you answer what backtests alone can't:
 <Warning>
   Most backtesting data quietly removes failed tokens. This makes strategies look better than they are. Omnera includes rugged tokens because when you're trading live, you don't get to skip them.
 </Warning>
-
-<Frame>
-```mermaid
-flowchart LR
-    subgraph "Other Backtesting Tools"
-        A1[Raw Data] --> B1[Remove Rugs]
-        B1 --> C1[Inflated Results]
-    end
-
-    subgraph "Omnera AI Backtester"
-        A2[Raw Data] --> B2[Keep Everything]
-        B2 --> C2[Real Results]
-    end
-
-    style A1 fill:#151236,color:#fff
-    style B1 fill:#ef4444,color:#fff
-    style C1 fill:#ef4444,color:#fff
-    style A2 fill:#151236,color:#fff
-    style B2 fill:#3D39A7,color:#fff
-    style C2 fill:#3D39A7,color:#fff
-```
-</Frame>
 
 When a token rugged during your backtest period, it's in there. When liquidity got pulled, it's in there. The results you see are the results you would have actually gotten.
 
