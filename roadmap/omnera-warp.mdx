@@ -1,105 +1,121 @@
 ---
 title: "Omnera Warp"
-description: "Intent-based cross-chain protocol for seamless multi-chain trading"
+description: "Intent-based cross-chain execution — no bridges, no wrapped tokens"
 ---
 
-## Overview
+## The Problem With Cross-Chain Today
 
-Omnera Warp is our intent-based cross-chain protocol that enables seamless trading across multiple blockchains. Express what you want to do, and Warp handles the complexity of cross-chain execution.
+You want to buy a token on Base using SOL. Here's what that looks like:
+
+1. Find a bridge
+2. Hope it's not compromised
+3. Wait for the bridge transaction
+4. Get wrapped tokens you didn't want
+5. Swap wrapped tokens for native
+6. Finally make your trade
+7. Pay fees at every step
+
+**30+ minutes, multiple transactions, and you're still not sure if you got a good rate.**
+
+## Omnera Warp: Just Say What You Want
+
+With Warp, you express your intent:
+
+> *"Buy $500 of TOKEN on Base using my SOL"*
+
+Warp handles everything else. One signature. No bridges. No wrapped tokens. No complexity.
 
 <Info>
   **Target Launch**: Q2-Q3 2026
 </Info>
 
-## The Problem
-
-Cross-chain trading today is fragmented and complex:
-
-- Multiple bridges with different trust assumptions
-- Gas tokens needed on every chain
-- Failed transactions and stuck funds
-- MEV extraction during bridging
-
-## The Warp Solution
+## How It Works
 
 <CardGroup cols={2}>
   <Card title="Intent-Based" icon="wand-magic-sparkles">
-    Express your desired outcome, not the execution path. Warp finds the optimal route.
+    Tell Omnera what you want. Not how to do it.
   </Card>
-  <Card title="Single Signature" icon="signature">
-    One transaction on your source chain executes the entire cross-chain operation.
+  <Card title="No Bridges" icon="bridge-water">
+    Direct cross-chain execution without traditional bridging.
+  </Card>
+  <Card title="No Wrapped Tokens" icon="gift">
+    Native assets on the destination chain. Not synthetic versions.
   </Card>
   <Card title="MEV Protected" icon="shield">
-    Private Execution technology extended to cross-chain trades.
-  </Card>
-  <Card title="No Bridging Required" icon="bridge">
-    Trade directly without manually bridging assets first.
+    Private Execution extends to cross-chain trades.
   </Card>
 </CardGroup>
 
-## How It Works
-
 <Steps>
-  <Step title="Express Intent">
-    Specify what you want: "Swap 1 SOL for ETH on Ethereum" or "Buy TOKEN on Base using USDC on Solana"
+  <Step title="Express Your Intent">
+    *"Swap 10 SOL for ETH on Ethereum"* or *"Buy TOKEN on Arbitrum using USDC on Solana"*
   </Step>
-  <Step title="Route Discovery">
-    Warp's solver network finds the optimal execution path across chains.
+  <Step title="Warp Finds the Path">
+    Our solver network competes to find you the best execution across all available routes.
   </Step>
-  <Step title="Single Transaction">
-    Sign one transaction on Solana. Warp handles everything else.
+  <Step title="One Signature">
+    Sign once on Solana. That's it.
   </Step>
-  <Step title="Guaranteed Execution">
-    Either your entire intent executes successfully, or nothing happens. No stuck funds.
+  <Step title="Execution">
+    Your intent executes atomically. Either it all happens, or none of it does. No stuck funds.
   </Step>
 </Steps>
 
 ## Supported Chains (Planned)
 
-| Chain | Status |
-|-------|--------|
-| Solana | Primary (Launch) |
-| Ethereum | Launch |
-| Base | Launch |
-| Arbitrum | Launch |
-| Additional L2s | Post-launch |
+| Chain | Launch Status |
+|-------|---------------|
+| Solana | Primary chain |
+| Ethereum | At launch |
+| Base | At launch |
+| Arbitrum | At launch |
+| More L2s | Post-launch |
 
-## Intent Examples
+## Why This Matters
+
+### For Traders
+
+- **Access any opportunity** — Don't miss a trade because your funds are on the wrong chain
+- **One interface** — Trade across chains from Omnera without juggling apps
+- **Better rates** — Solver competition means you get optimal execution
+
+### No More Bridge Risk
+
+Bridges have lost billions to hacks. Warp's architecture eliminates the traditional bridge attack surface. Your assets move through execution, not custody.
+
+## Example Intents
 
 ```
-Intent: Swap 10 SOL for maximum ETH on Ethereum
-Result: Warp finds the best rate across all available paths
+"Swap all my SOL for ETH on Ethereum"
+→ Warp finds best rate, executes atomically
 
-Intent: Buy 1000 USDC of TOKEN on Base using SOL
-Result: SOL → USDC → Bridge → TOKEN, all in one signature
+"Buy 1000 USDC worth of DEGEN on Base"
+→ SOL → execution → DEGEN, one signature
 
-Intent: Move my portfolio from Ethereum to Solana
-Result: All assets converted and bridged optimally
+"Move my portfolio to Arbitrum"
+→ All assets converted and transferred optimally
 ```
 
 ## Technical Architecture
 
 <AccordionGroup>
   <Accordion title="Solver Network" icon="network-wired">
-    Decentralized network of solvers competing to fill user intents at the best rates.
+    Decentralized solvers compete to fill your intent. Competition = better rates for you.
   </Accordion>
-  <Accordion title="Escrow System" icon="lock">
-    Secure escrow ensures solvers fulfill intents correctly before receiving payment.
+  <Accordion title="Atomic Execution" icon="atom">
+    Intents either fully complete or fully revert. No partial fills, no stuck funds.
   </Accordion>
-  <Accordion title="Oracle Integration" icon="eye">
-    Real-time price feeds ensure accurate execution across chains.
-  </Accordion>
-  <Accordion title="Fallback Mechanisms" icon="rotate">
-    Automatic fallbacks if primary routes fail, ensuring intent completion.
+  <Accordion title="No Custody" icon="key">
+    Warp never holds your assets. Execution happens through smart contracts, not custody.
   </Accordion>
 </AccordionGroup>
 
 ## For Developers
 
-Interested in building on Warp? Check out the [Warp SDK](/roadmap/warp-sdk) for integration details.
+Want to build on Warp? The [Warp SDK](/roadmap/warp-sdk) will let you integrate cross-chain execution into your own applications.
 
-## Stay Updated
+## Get Notified
 
-<Card title="Join the Waitlist" icon="list" href="https://omnera.trade/warp-waitlist">
+<Card title="Join the Waitlist" icon="bell" href="https://omnera.trade/warp-waitlist">
   Be first to know when Omnera Warp launches.
 </Card>

@@ -1,112 +1,143 @@
 ---
 title: "AI Backtester"
-description: "Test strategies against real historical data with realistic conditions"
+description: "Test your strategy before you risk a single dollar"
 ---
 
-## Overview
+## The Problem
 
-The AI Backtester lets you validate your trading strategies against real historical market data. Unlike other backtesting tools, Omnera includes realistic slippage, failed transactions, and yes—even rug pulls—to give you an accurate picture of how your strategy would actually perform.
+You think you have a strategy. Maybe it's:
+- "Buy tokens under $100K market cap with locked liquidity"
+- "Enter when holder count crosses 500"
+- "Sell at 2x, cut losses at 50%"
 
-<Warning>
-  Past performance does not guarantee future results. Use backtesting as one tool in your decision-making process, not as the sole basis for trading.
-</Warning>
+But does it actually work? You won't know until you've lost real money finding out.
 
-## Key Features
+## The Solution
+
+Run your exact filters and rules against **real Solana data** from the last 7-30 days. Not cleaned-up data. Not survivorship-biased data. Real data — with realistic slippage, rug pulls included, and all the chaos of actual meme coin markets.
+
+<Info>
+  Most backtesting tools quietly remove rugged tokens from their data. Omnera includes them — because you would have traded them too.
+</Info>
+
+## AI That Speaks Plain English
+
+The AI Backtester doesn't just give you numbers. It tells you what they mean.
 
 <CardGroup cols={2}>
-  <Card title="Real Historical Data" icon="database">
-    Test against actual on-chain data, not simulated or cleaned datasets.
+  <Card title="Honest Assessment" icon="comments">
+    *"This strategy lost 14 trades in a row at one point. Could you handle that?"*
   </Card>
-  <Card title="Realistic Slippage" icon="chart-line">
-    Slippage is calculated based on actual liquidity conditions at each point in time.
+  <Card title="What Broke" icon="magnifying-glass">
+    *"Your biggest losses came from tokens with unlocked liquidity. Consider adding that filter."*
   </Card>
-  <Card title="Rug Pull Inclusion" icon="bomb">
-    Failed tokens and rug pulls are included, showing you the real risks you would have faced.
+  <Card title="Suggested Fixes" icon="wrench">
+    *"Adding a minimum holder count of 200 would have avoided 60% of your losing trades."*
   </Card>
-  <Card title="MEV Simulation" icon="robot">
-    Optional MEV impact simulation to understand how bots would have affected your trades.
+  <Card title="Reality Check" icon="scale-balanced">
+    *"This strategy has edge, but requires $5K minimum to survive the drawdowns."*
   </Card>
 </CardGroup>
 
-## Creating a Backtest
+## What Gets Tested
 
-### Step 1: Define Your Strategy
+### Your Exact Rules
 
-Configure your trading strategy parameters:
+Define your strategy however you trade:
 
 ```
-Strategy Parameters:
-- Entry conditions (price, volume, holder metrics, etc.)
-- Exit conditions (take profit, stop loss, time-based)
-- Position sizing rules
-- Maximum concurrent positions
+Entry Conditions:
+- Market cap between $50K and $500K
+- Liquidity locked for 30+ days
+- Top 10 holders own less than 40%
+- At least 100 holders
+- Creator wallet has 2+ previous tokens
+
+Exit Conditions:
+- Take profit at 2x
+- Stop loss at -40%
+- Time-based exit after 4 hours if flat
 ```
 
-### Step 2: Set the Time Period
+### Against Real Conditions
 
-Choose your backtest period:
+| What's Included | Why It Matters |
+|-----------------|----------------|
+| Realistic slippage | Your backtested entry price matches what you'd actually get |
+| Failed transactions | Some trades wouldn't have executed — we account for that |
+| Rug pulls | Tokens that went to zero are in the data |
+| Gas costs | Priority fees during congestion are included |
+| Timing | Execution delays based on actual network conditions |
 
-| Period | Best For |
-|--------|----------|
-| 7 days | Quick validation of recent strategies |
-| 30 days | Standard testing with varied market conditions |
-| 90 days | Comprehensive testing across market cycles |
-| Custom | Specific event or time period analysis |
+## How to Use the Backtester
 
-### Step 3: Configure Realism Settings
+<Steps>
+  <Step title="Define Your Strategy">
+    Set your entry conditions, exit rules, and position sizing. Be specific — the more precise your rules, the more accurate your backtest.
+  </Step>
+  <Step title="Choose Your Period">
+    - **7 days**: Quick validation, recent market conditions
+    - **14 days**: Balanced view across different market states
+    - **30 days**: Comprehensive test including various market cycles
+  </Step>
+  <Step title="Run the Backtest">
+    Omnera simulates every trade your strategy would have made, with realistic execution.
+  </Step>
+  <Step title="Review with the AI">
+    Don't just look at the numbers. Ask the AI:
+    - *"What killed my best trades?"*
+    - *"How do I reduce drawdowns?"*
+    - *"Is this edge real or just luck?"*
+  </Step>
+  <Step title="Refine and Repeat">
+    Adjust your strategy based on the AI's feedback. Run again. Find real edge — or save yourself from a strategy that was destined to fail.
+  </Step>
+</Steps>
+
+## Understanding Your Results
+
+### Key Metrics
+
+| Metric | What It Means | What's Good |
+|--------|---------------|-------------|
+| Win Rate | % of profitable trades | Depends on R:R, but >35% with good sizing |
+| Average R | Avg win ÷ avg loss | Above 2.0 means winners outpace losers |
+| Max Drawdown | Worst peak-to-trough decline | Under 30% for most traders |
+| Max Losing Streak | Most consecutive losses | Can you emotionally handle this? |
+| Expectancy | Average $ per trade | Positive = you have edge |
+
+### The Questions That Matter
+
+The AI helps you answer what backtests alone can't:
 
 <AccordionGroup>
-  <Accordion title="Slippage Model" icon="sliders">
-    - **Optimistic**: Minimal slippage (not recommended)
-    - **Realistic**: Calculated from actual pool depth (recommended)
-    - **Pessimistic**: Higher slippage for conservative estimates
+  <Accordion title="Can you handle the drawdowns?" icon="heart-pulse">
+    A strategy might be profitable but require stomach-churning losing streaks. The AI tells you upfront.
   </Accordion>
-  <Accordion title="Include Rugs" icon="skull">
-    Toggle whether to include tokens that were later rugged. We recommend keeping this ON for accurate results.
+  <Accordion title="Is the edge statistically significant?" icon="chart-simple">
+    10 winning trades could be luck. The AI assesses whether your sample size supports real conclusions.
   </Accordion>
-  <Accordion title="MEV Impact" icon="robot">
-    Simulate how MEV bots would have affected your entries and exits.
+  <Accordion title="What market conditions does this need?" icon="cloud-sun">
+    Some strategies only work in specific conditions. The AI identifies dependencies.
+  </Accordion>
+  <Accordion title="How much capital do you need?" icon="sack-dollar">
+    Based on drawdowns and position sizing, the AI calculates minimum viable capital.
   </Accordion>
 </AccordionGroup>
 
-### Step 4: Run and Analyze
+## No Survivorship Bias
 
-After running your backtest, you'll receive:
+<Warning>
+  Most backtesting data quietly removes failed tokens. This makes strategies look better than they are. Omnera includes rugged tokens because when you're trading live, you don't get to skip them.
+</Warning>
 
-- **Total Return**: Net profit/loss percentage
-- **Win Rate**: Percentage of profitable trades
-- **Max Drawdown**: Largest peak-to-trough decline
-- **Sharpe Ratio**: Risk-adjusted return metric
-- **Trade Log**: Detailed breakdown of every trade
+When a token rugged during your backtest period, it's in there. When liquidity got pulled, it's in there. The results you see are the results you would have actually gotten.
 
-## Interpreting Results
+## Find Edge or Save Money
 
-<Tip>
-  Focus on risk-adjusted metrics like Sharpe ratio and max drawdown, not just total return.
-</Tip>
+The AI Backtester does one of two things:
 
-### Key Metrics Explained
+1. **Validates your edge** — You have a real strategy. Now you can trade it with confidence.
+2. **Saves you from yourself** — The strategy doesn't work. Better to find out here than with real money.
 
-| Metric | What It Means | Target |
-|--------|---------------|--------|
-| Win Rate | Percentage of winning trades | > 40% for most strategies |
-| Avg Win/Loss | Ratio of average win to average loss | > 2.0 |
-| Max Drawdown | Worst decline from peak | < 30% |
-| Sharpe Ratio | Return per unit of risk | > 1.0 |
-
-## Strategy Templates
-
-Get started quickly with pre-built strategy templates:
-
-- **Momentum Hunter**: Enter on volume spikes, exit on momentum loss
-- **Holder Watcher**: Trade based on holder distribution changes
-- **Liquidity Sniper**: Enter when liquidity conditions are favorable
-- **Social Surge**: Trade on social signal increases
-
-## Best Practices
-
-1. **Test multiple time periods**: Don't optimize for a single period
-2. **Use realistic settings**: Optimistic slippage gives false confidence
-3. **Include rugs**: Your real trading will encounter them
-4. **Walk-forward test**: Validate on out-of-sample data
-5. **Size appropriately**: Backtest with position sizes you'd actually use
+Either outcome is a win.

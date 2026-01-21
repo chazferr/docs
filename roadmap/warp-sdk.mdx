@@ -1,144 +1,97 @@
 ---
 title: "Warp SDK"
-description: "B2B SDK for integrating Omnera Warp cross-chain capabilities"
+description: "B2B SDK for cross-chain integration"
 ---
 
-## Overview
+## Build With Warp
 
-The Warp SDK enables partners to integrate Omnera Warp's intent-based cross-chain capabilities directly into their applications. Offer your users seamless multi-chain trading without building bridge infrastructure yourself.
+The Warp SDK lets partners integrate Omnera Warp's cross-chain capabilities directly into their applications. Offer your users seamless multi-chain trading without building bridge infrastructure.
 
 <Info>
-  **Target Launch**: 2026 (Following Warp launch)
+  **Target Launch**: 2026 (following Warp launch)
 </Info>
 
-## Why Integrate Warp?
+## Why Integrate
 
 <CardGroup cols={2}>
   <Card title="Multi-Chain Access" icon="link">
-    Let your users access assets on any supported chain from a single interface.
+    Let users trade across chains from your interface.
   </Card>
   <Card title="No Infrastructure" icon="server">
-    Skip building and maintaining bridge integrations. We handle the complexity.
+    We handle the complexity. You get the capability.
   </Card>
   <Card title="MEV Protection" icon="shield">
-    Your users get Omnera's Private Execution protection on all cross-chain trades.
+    Every trade through Warp SDK gets Private Execution.
   </Card>
   <Card title="Revenue Share" icon="coins">
-    Earn a share of protocol fees for trades routed through your integration.
+    Earn from volume routed through your integration.
   </Card>
 </CardGroup>
 
-## SDK Features
-
-### Core Capabilities
+## SDK Capabilities
 
 | Feature | Description |
 |---------|-------------|
-| Intent Submission | Submit cross-chain intents on behalf of users |
-| Quote Aggregation | Get real-time quotes across all available routes |
-| Status Tracking | Monitor intent execution status in real-time |
-| Webhook Support | Receive callbacks on intent completion |
+| Intent Submission | Submit cross-chain intents for your users |
+| Quote Aggregation | Real-time quotes across all routes |
+| Status Tracking | Monitor execution in real-time |
+| Webhooks | Callbacks on completion |
 
-### Developer Experience
+## Code Examples
 
-- **TypeScript/JavaScript SDK** with full type definitions
-- **REST API** for server-side integrations
-- **React Hooks** for frontend applications
-- **Comprehensive documentation** and examples
-
-## Integration Examples
-
-### Basic Quote Request
+### Get a Quote
 
 ```typescript
 import { WarpSDK } from '@omnera/warp-sdk';
 
-const warp = new WarpSDK({ apiKey: 'your-api-key' });
+const warp = new WarpSDK({ apiKey: 'your-key' });
 
 const quote = await warp.getQuote({
   sourceChain: 'solana',
   sourceToken: 'SOL',
-  destChain: 'ethereum',
-  destToken: 'ETH',
-  amount: '1000000000' // 1 SOL in lamports
+  destChain: 'base',
+  destToken: 'USDC',
+  amount: '1000000000' // lamports
 });
-
-console.log(quote.expectedOutput); // ETH amount
-console.log(quote.routes); // Available execution paths
 ```
 
-### Submit Intent
+### Execute Intent
 
 ```typescript
 const intent = await warp.submitIntent({
   quote: quote.id,
-  userAddress: 'user-wallet-address',
-  slippageTolerance: 0.5 // 0.5%
+  userAddress: 'wallet-address',
+  slippageTolerance: 0.5
 });
 
-// Track execution
+// Track status
 const status = await warp.getIntentStatus(intent.id);
-```
-
-### React Hook
-
-```typescript
-import { useWarpQuote } from '@omnera/warp-sdk/react';
-
-function SwapWidget() {
-  const { quote, loading, error } = useWarpQuote({
-    sourceChain: 'solana',
-    sourceToken: 'SOL',
-    destChain: 'base',
-    destToken: 'USDC',
-    amount: inputAmount
-  });
-
-  return (
-    <div>
-      {loading && <Spinner />}
-      {quote && <QuoteDisplay quote={quote} />}
-    </div>
-  );
-}
 ```
 
 ## Use Cases
 
 <AccordionGroup>
   <Accordion title="DEX Aggregators" icon="shuffle">
-    Expand your DEX to support cross-chain swaps with a single integration.
+    Add cross-chain swaps with one integration.
   </Accordion>
   <Accordion title="Wallets" icon="wallet">
-    Let users manage and trade assets across chains from your wallet interface.
+    Let users manage assets across chains.
   </Accordion>
   <Accordion title="DeFi Protocols" icon="landmark">
-    Enable cross-chain deposits, withdrawals, and yield strategies.
-  </Accordion>
-  <Accordion title="NFT Marketplaces" icon="image">
-    Allow purchases using assets from any supported chain.
+    Enable cross-chain deposits and withdrawals.
   </Accordion>
 </AccordionGroup>
 
 ## Partnership Tiers
 
-| Tier | Volume | Revenue Share | Support |
-|------|--------|---------------|---------|
-| Standard | < $1M/month | 10% | Documentation |
-| Pro | $1-10M/month | 15% | Dedicated support |
-| Enterprise | > $10M/month | Custom | Custom integration |
+| Tier | Monthly Volume | Revenue Share |
+|------|----------------|---------------|
+| Standard | < $1M | 10% |
+| Pro | $1-10M | 15% |
+| Enterprise | > $10M | Custom |
 
-## Get Early Access
-
-We're working with select partners for early SDK access.
+## Get Started
 
 <Card title="Apply for Partnership" icon="handshake" href="mailto:partnerships@omnera.trade">
-  Contact us to discuss integration opportunities.
+  Contact us to discuss integration.
 </Card>
-
-## Coming Soon
-
-- Full API documentation
-- SDK package installation
-- Sandbox environment for testing
-- Integration guides and tutorials

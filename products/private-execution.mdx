@@ -1,112 +1,133 @@
 ---
 title: "Private Execution"
-description: "MEV-protected trading for safe transaction execution"
+description: "MEV-protected trading — keep what you earn"
 ---
 
-## Overview
+## The Problem
 
-Private Execution is Omnera's MEV protection layer that shields your trades from sandwich attacks, front-running, and other forms of value extraction. When you trade with Private Execution enabled, your transactions are routed through protected channels to ensure you get the price you expect.
+You find a great entry. You submit your trade. But before it executes:
 
-<Info>
-  MEV (Maximal Extractable Value) costs Solana traders millions in value extraction every month. Private Execution helps you keep more of your profits.
-</Info>
+1. A bot sees your pending transaction
+2. It buys before you, pushing the price up
+3. Your trade executes at a worse price
+4. The bot sells into your buy
 
-## What is MEV?
+**You just got sandwiched.** The bot made money. You paid for it.
 
-MEV refers to the profit that can be extracted from users by reordering, inserting, or censoring transactions. Common MEV attacks include:
+This happens constantly on Solana. MEV bots extract millions from traders every month — and most traders don't even realize it's happening.
+
+## The Solution
+
+Every trade routed through Omnera is MEV-protected.
 
 <CardGroup cols={2}>
-  <Card title="Sandwich Attacks" icon="burger">
-    Bots detect your pending trade and place orders before and after yours, profiting from the price impact.
+  <Card title="No Front-Running" icon="person-running">
+    Bots can't see your trade before it executes.
   </Card>
-  <Card title="Front-Running" icon="person-running">
-    Bots copy your trade and execute it before you, taking the opportunity you identified.
+  <Card title="No Sandwich Attacks" icon="burger">
+    Your transaction can't be wrapped by predatory trades.
   </Card>
-  <Card title="Back-Running" icon="arrow-right">
-    Bots place trades immediately after yours to capture arbitrage opportunities you created.
+  <Card title="Price You Expect" icon="tag">
+    The price you see is the price you get.
   </Card>
-  <Card title="JIT Liquidity" icon="clock">
-    Just-in-time liquidity that extracts value from your swap through precise timing.
+  <Card title="Keep Your Profits" icon="piggy-bank">
+    Stop paying the invisible tax to MEV bots.
   </Card>
 </CardGroup>
 
-## How Private Execution Works
+## How It Works
 
 <Steps>
-  <Step title="Transaction Submission">
-    When you submit a trade with Private Execution enabled, your transaction is encrypted and sent to our protected mempool.
+  <Step title="You Submit a Trade">
+    Buy or sell through Omnera's interface.
   </Step>
   <Step title="Private Routing">
-    Your transaction is routed directly to block builders who commit to not extracting MEV from protected transactions.
+    Your transaction is encrypted and sent directly to validators who commit to not extracting MEV.
   </Step>
-  <Step title="Execution">
-    Your trade executes at the expected price without interference from MEV bots.
+  <Step title="Protected Execution">
+    Your trade executes without bots seeing it in the public mempool.
   </Step>
-  <Step title="Confirmation">
-    You receive confirmation with the actual execution price matching your quoted price.
+  <Step title="You Keep the Value">
+    No sandwich. No front-run. The price you saw is the price you got.
   </Step>
 </Steps>
 
-## Enabling Private Execution
+## Always On
 
-### In the Trading Interface
+Private Execution is enabled by default on all Omnera trades. You don't need to toggle anything or pay extra. Every swap, every trade — protected.
 
-1. Navigate to any swap or trade interface
-2. Look for the "Private Execution" toggle
-3. Enable it before submitting your transaction
+## The Invisible Tax
 
-### Default Settings
+Most traders don't realize how much they lose to MEV:
 
-You can set Private Execution as your default in Settings:
+| Trade Size | Typical MEV Loss | Per Month (20 trades) |
+|------------|------------------|----------------------|
+| 1 SOL | 0.5-2% | 0.1-0.4 SOL |
+| 5 SOL | 1-3% | 1-3 SOL |
+| 10+ SOL | 2-5% | 4-10 SOL |
 
-1. Go to Settings > Trading Preferences
-2. Enable "Always use Private Execution"
-3. Save your preferences
+<Info>
+  Larger trades attract more MEV attention. The bots know a 10 SOL buy will move price more than a 1 SOL buy — so they front-run it harder.
+</Info>
 
-## Protection Levels
+These percentages add up. Over a month of active trading, MEV can eat a significant portion of your profits — or turn winning strategies into losing ones.
+
+## What MEV Looks Like
+
+### Sandwich Attack
+
+```
+1. You: Submit buy for 5 SOL of TOKEN
+2. Bot: Sees your pending tx, buys TOKEN first
+3. Price: Goes up from bot's buy
+4. You: Your buy executes at higher price
+5. Bot: Sells TOKEN into your buy
+6. Result: Bot profits, you overpaid
+```
+
+### Front-Running
+
+```
+1. You: Submit buy for promising new token
+2. Bot: Copies your trade, executes first
+3. You: Either get worse price or fail entirely
+4. Bot: Got the entry you identified
+```
+
+## Private Execution Stops This
+
+With Omnera:
+
+```
+1. You: Submit buy for 5 SOL of TOKEN
+2. Transaction: Encrypted, sent to protected validators
+3. Bots: Can't see it
+4. Execution: At the price you expected
+5. Result: You keep the value
+```
+
+## FAQ
 
 <AccordionGroup>
-  <Accordion title="Standard Protection" icon="shield">
-    Protects against common sandwich attacks and front-running. Suitable for most trades.
+  <Accordion title="Is there additional cost?" icon="coins">
+    No. Private Execution is included in standard Omnera trading fees.
   </Accordion>
-  <Accordion title="Enhanced Protection" icon="shield-check">
-    Additional protections for larger trades including timing randomization and split execution.
+  <Accordion title="Is it slower?" icon="clock">
+    Negligible difference — typically 50-100ms additional latency. Unnoticeable in practice.
+  </Accordion>
+  <Accordion title="Does it work for all tokens?" icon="list-check">
+    Yes. Any Solana token traded through Omnera gets MEV protection.
+  </Accordion>
+  <Accordion title="Can I disable it?" icon="toggle-off">
+    Yes, though we don't recommend it. Some traders want raw mempool access for specific strategies.
+  </Accordion>
+  <Accordion title="How do I know it's working?" icon="shield-check">
+    Protected trades show a shield icon in your transaction history. You can compare your execution price to the market price at time of submission.
   </Accordion>
 </AccordionGroup>
 
-## When to Use Private Execution
+## The Bottom Line
 
-<Tip>
-  We recommend using Private Execution for all trades, but it's especially important for larger positions.
-</Tip>
+You find the trades. You take the risk. You should keep the profits.
 
-| Trade Size | Recommendation |
-|------------|----------------|
-| < 1 SOL | Optional but recommended |
-| 1-10 SOL | Strongly recommended |
-| > 10 SOL | Essential |
-
-## Performance Impact
-
-Private Execution adds minimal latency to your transactions:
-
-- **Additional latency**: ~50-100ms
-- **Success rate**: Comparable to standard execution
-- **Cost**: Included in standard trading fees
-
-## Frequently Asked Questions
-
-<AccordionGroup>
-  <Accordion title="Does Private Execution guarantee my trade will succeed?">
-    No. Private Execution protects against MEV extraction but cannot prevent failed transactions due to insufficient liquidity, slippage tolerance, or other factors.
-  </Accordion>
-  <Accordion title="Is there an additional fee for Private Execution?">
-    Private Execution is included in Omnera's standard trading fees at no additional cost.
-  </Accordion>
-  <Accordion title="Can I use Private Execution with limit orders?">
-    Yes, all order types support Private Execution.
-  </Accordion>
-  <Accordion title="How do I know my trade was protected?">
-    Protected trades are marked with a shield icon in your transaction history, and you can view the MEV protection details in the transaction receipt.
-  </Accordion>
-</AccordionGroup>
+Private Execution ensures the value you create stays with you — not with bots that contribute nothing except extraction.
