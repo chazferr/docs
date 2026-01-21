@@ -14,10 +14,10 @@ But does it actually work? You won't know until you've lost real money finding o
 
 ## The Solution
 
-Run your exact filters and rules against **real Solana data** from the last 7-30 days. Not cleaned-up data. Not survivorship-biased data. Real data — with realistic slippage, failed tokens included, and all the chaos of actual markets.
+Run your exact filters and rules against **real Solana data** from the last 7 to 30 days. Not cleaned up data. Not survivorship biased data. Real data, with realistic slippage, failed tokens included, and all the chaos of actual markets.
 
 <Info>
-  Most backtesting tools quietly remove failed tokens from their data. Omnera includes them — because you would have traded them too.
+  Most backtesting tools quietly remove failed tokens from their data. Omnera includes them, because you would have traded them too.
 </Info>
 
 ## AI That Speaks Plain English
@@ -56,7 +56,7 @@ Entry Conditions:
 Exit Conditions:
 - Take profit at 2x
 - Stop loss at -40%
-- Time-based exit after 4 hours if flat
+- Time based exit after 4 hours if flat
 ```
 
 ### Against Real Conditions
@@ -64,7 +64,7 @@ Exit Conditions:
 | What's Included | Why It Matters |
 |-----------------|----------------|
 | Realistic slippage | Your backtested entry price matches what you'd actually get |
-| Failed transactions | Some trades wouldn't have executed — we account for that |
+| Failed transactions | Some trades wouldn't have executed. We account for that |
 | Failed tokens | Tokens that went to zero are in the data |
 | Gas costs | Priority fees during congestion are included |
 | Timing | Execution delays based on actual network conditions |
@@ -73,7 +73,7 @@ Exit Conditions:
 
 <Steps>
   <Step title="Define Your Strategy">
-    Set your entry conditions, exit rules, and position sizing. Be specific — the more precise your rules, the more accurate your backtest.
+    Set your entry conditions, exit rules, and position sizing. Be specific. The more precise your rules, the more accurate your backtest.
   </Step>
   <Step title="Choose Your Period">
     - **7 days**: Quick validation, recent market conditions
@@ -90,7 +90,7 @@ Exit Conditions:
     - *"Is this edge real or just luck?"*
   </Step>
   <Step title="Refine and Repeat">
-    Adjust your strategy based on the AI's feedback. Run again. Find real edge — or save yourself from a strategy that was destined to fail.
+    Adjust your strategy based on the AI's feedback. Run again. Find real edge, or save yourself from a strategy that was destined to fail.
   </Step>
 </Steps>
 
@@ -102,7 +102,7 @@ Exit Conditions:
 |--------|---------------|-------------|
 | Win Rate | % of profitable trades | Depends on R:R, but >35% with good sizing |
 | Average R | Avg win ÷ avg loss | Above 2.0 means winners outpace losers |
-| Max Drawdown | Worst peak-to-trough decline | Under 30% for most traders |
+| Max Drawdown | Worst peak to trough decline | Under 30% for most traders |
 | Max Losing Streak | Most consecutive losses | Can you emotionally handle this? |
 | Expectancy | Average $ per trade | Positive = you have edge |
 
@@ -112,7 +112,7 @@ The AI helps you answer what backtests alone can't:
 
 <AccordionGroup>
   <Accordion title="Can you handle the drawdowns?" icon="heart-pulse">
-    A strategy might be profitable but require stomach-churning losing streaks. The AI tells you upfront.
+    A strategy might be profitable but require stomach churning losing streaks. The AI tells you upfront.
   </Accordion>
   <Accordion title="Is the edge statistically significant?" icon="chart-simple">
     10 winning trades could be luck. The AI assesses whether your sample size supports real conclusions.
@@ -128,7 +128,7 @@ The AI helps you answer what backtests alone can't:
 ## No Survivorship Bias
 
 <Warning>
-  Most backtesting data quietly removes failed tokens. This makes strategies look better than they are. Omnera includes all tokens — including those that went to zero — because when you're trading live, you don't get to skip them.
+  Most backtesting data quietly removes failed tokens. This makes strategies look better than they are. Omnera includes all tokens, including those that went to zero, because when you're trading live, you don't get to skip them.
 </Warning>
 
 When a token failed during your backtest period, it's in there. When liquidity was pulled, it's in there. The results you see are the results you would have actually gotten.
@@ -137,7 +137,7 @@ When a token failed during your backtest period, it's in there. When liquidity w
 
 The AI Backtester does one of two things:
 
-1. **Validates your edge** — You have a real strategy. Now you can trade it with confidence.
-2. **Saves you from yourself** — The strategy doesn't work. Better to find out here than with real money.
+1. **Validates your edge.** You have a real strategy. Now you can trade it with confidence.
+2. **Saves you from yourself.** The strategy doesn't work. Better to find out here than with real money.
 
 Either outcome is a win.

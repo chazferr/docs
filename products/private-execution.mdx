@@ -1,6 +1,6 @@
 ---
 title: "Private Execution"
-description: "MEV-protected trading — keep what you earn"
+description: "MEV protected trading. Keep what you earn"
 ---
 
 ## The Problem
@@ -14,14 +14,14 @@ You find a great entry. You submit your trade. But before it executes:
 
 **You just got sandwiched.** The bot made money. You paid for it.
 
-This happens constantly on Solana. MEV bots extract millions from traders every month — and most traders don't even realize it's happening.
+This happens constantly on Solana. MEV bots extract millions from traders every month, and most traders don't even realize it's happening.
 
 ## The Solution
 
-Every trade routed through Omnera is MEV-protected.
+Every trade routed through Omnera is MEV protected.
 
 <CardGroup cols={2}>
-  <Card title="No Front-Running" icon="person-running">
+  <Card title="No Front Running" icon="person-running">
     Bots can't see your trade before it executes.
   </Card>
   <Card title="No Sandwich Attacks" icon="burger">
@@ -48,13 +48,13 @@ Every trade routed through Omnera is MEV-protected.
     Your trade executes without bots seeing it in the public mempool.
   </Step>
   <Step title="You Keep the Value">
-    No sandwich. No front-run. The price you saw is the price you got.
+    No sandwich. No front run. The price you saw is the price you got.
   </Step>
 </Steps>
 
 ## Always On
 
-Private Execution is enabled by default on all Omnera trades. You don't need to toggle anything or pay extra. Every swap, every trade — protected.
+Private Execution is enabled by default on all Omnera trades. You don't need to toggle anything or pay extra. Every swap, every trade. Protected.
 
 ## The Invisible Tax
 
@@ -67,10 +67,10 @@ Most traders don't realize how much they lose to MEV:
 | 10+ SOL | 2-5% | 4-10 SOL |
 
 <Info>
-  Larger trades attract more MEV attention. The bots know a 10 SOL buy will move price more than a 1 SOL buy — so they front-run it harder.
+  Larger trades attract more MEV attention. The bots know a 10 SOL buy will move price more than a 1 SOL buy, so they front run it harder.
 </Info>
 
-These percentages add up. Over a month of active trading, MEV can eat a significant portion of your profits — or turn winning strategies into losing ones.
+These percentages add up. Over a month of active trading, MEV can eat a significant portion of your profits, or turn winning strategies into losing ones.
 
 ## What MEV Looks Like
 
@@ -83,11 +83,11 @@ A sandwich attack wraps your trade between two bot transactions to extract value
 3. Bot buys the token first, pushing the price up
 4. Your trade executes at the higher price
 5. Bot sells into your buy, profiting from the spread
-6. You overpaid — the bot extracted value from your trade
+6. You overpaid. The bot extracted value from your trade
 
-### Front-Running
+### Front Running
 
-Front-running is when a bot copies your trade and executes it before you:
+Front running is when a bot copies your trade and executes it before you:
 
 1. You submit a buy order for a promising token
 2. Bot sees your transaction in the mempool
@@ -105,7 +105,7 @@ With Omnera, your transaction never enters the public mempool where bots can see
 3. It's sent directly to protected validators via private channels
 4. Bots never see your transaction
 5. Your trade executes at the expected price
-6. No MEV extracted — you keep the value
+6. No MEV extracted. You keep the value
 
 ## FAQ
 
@@ -114,7 +114,7 @@ With Omnera, your transaction never enters the public mempool where bots can see
     No. Private Execution is included in standard Omnera trading fees.
   </Accordion>
   <Accordion title="Is it slower?" icon="clock">
-    Negligible difference — typically 50-100ms additional latency. Unnoticeable in practice.
+    Negligible difference. Typically 50-100ms additional latency. Unnoticeable in practice.
   </Accordion>
   <Accordion title="Does it work for all tokens?" icon="list-check">
     Yes. Any Solana token traded through Omnera gets MEV protection.
@@ -131,4 +131,4 @@ With Omnera, your transaction never enters the public mempool where bots can see
 
 You find the trades. You take the risk. You should keep the profits.
 
-Private Execution ensures the value you create stays with you — not with bots that contribute nothing except extraction.
+Private Execution ensures the value you create stays with you, not with bots that contribute nothing except extraction.
