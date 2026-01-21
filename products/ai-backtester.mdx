@@ -14,10 +14,10 @@ But does it actually work? You won't know until you've lost real money finding o
 
 ## The Solution
 
-Run your exact filters and rules against **real Solana data** from the last 7-30 days. Not cleaned-up data. Not survivorship-biased data. Real data — with realistic slippage, rug pulls included, and all the chaos of actual meme coin markets.
+Run your exact filters and rules against **real Solana data** from the last 7-30 days. Not cleaned-up data. Not survivorship-biased data. Real data — with realistic slippage, failed tokens included, and all the chaos of actual markets.
 
 <Info>
-  Most backtesting tools quietly remove rugged tokens from their data. Omnera includes them — because you would have traded them too.
+  Most backtesting tools quietly remove failed tokens from their data. Omnera includes them — because you would have traded them too.
 </Info>
 
 ## AI That Speaks Plain English
@@ -65,7 +65,7 @@ Exit Conditions:
 |-----------------|----------------|
 | Realistic slippage | Your backtested entry price matches what you'd actually get |
 | Failed transactions | Some trades wouldn't have executed — we account for that |
-| Rug pulls | Tokens that went to zero are in the data |
+| Failed tokens | Tokens that went to zero are in the data |
 | Gas costs | Priority fees during congestion are included |
 | Timing | Execution delays based on actual network conditions |
 
@@ -128,10 +128,10 @@ The AI helps you answer what backtests alone can't:
 ## No Survivorship Bias
 
 <Warning>
-  Most backtesting data quietly removes failed tokens. This makes strategies look better than they are. Omnera includes rugged tokens because when you're trading live, you don't get to skip them.
+  Most backtesting data quietly removes failed tokens. This makes strategies look better than they are. Omnera includes all tokens — including those that went to zero — because when you're trading live, you don't get to skip them.
 </Warning>
 
-When a token rugged during your backtest period, it's in there. When liquidity got pulled, it's in there. The results you see are the results you would have actually gotten.
+When a token failed during your backtest period, it's in there. When liquidity was pulled, it's in there. The results you see are the results you would have actually gotten.
 
 ## Find Edge or Save Money
 
