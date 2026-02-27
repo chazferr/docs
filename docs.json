@@ -23,9 +23,9 @@
           {
             "group": "Products",
             "pages": [
-              "products/token-intelligence",
-              "products/ai-backtester",
-              "products/private-execution"
+              "products/personalized-feed",
+              "products/pre-trade-intelligence",
+              "products/cross-chain-execution"
             ]
           },
           {
@@ -64,7 +64,7 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Platform",
+          "anchor": "Join Waitlist",
           "href": "https://omnera.trade",
           "icon": "rocket"
         },
@@ -89,7 +89,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Launch App",
+      "label": "Get Early Access",
       "href": "https://omnera.trade"
     }
   },

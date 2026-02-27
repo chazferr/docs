@@ -1,0 +1,116 @@
+---
+title: "Cross-Chain Execution"
+description: "Solana. Base. Sub-500ms. One tap."
+---
+
+## The Problem
+
+Your funds are on Solana. The opportunity is on Base. Now you need to:
+
+1. Find a bridge
+2. Hope it's not compromised
+3. Wait for the bridge transaction
+4. Get wrapped tokens you didn't want
+5. Swap wrapped tokens for native
+6. Finally make your trade
+7. Pay fees at every step
+
+**30+ minutes, multiple transactions, and you're still not sure if you got a good rate.**
+
+## One Tap. Any Chain.
+
+Omnera handles cross-chain execution natively. See an opportunity on Base while holding SOL? One tap. Done.
+
+<CardGroup cols={2}>
+  <Card title="Sub-500ms" icon="gauge-high">
+    Execution in under 500 milliseconds. Not minutes. Not seconds.
+  </Card>
+  <Card title="No Bridges" icon="bridge-water">
+    Direct cross-chain execution. No traditional bridging required.
+  </Card>
+  <Card title="No Wrapped Tokens" icon="gift">
+    Native assets on the destination chain. Not synthetic versions.
+  </Card>
+  <Card title="MEV-Protected" icon="shield">
+    Every cross-chain trade gets the same MEV protection as single-chain trades.
+  </Card>
+</CardGroup>
+
+## Infrastructure
+
+This isn't a wrapper on someone else's RPC. Omnera runs bare-metal physical nodes.
+
+| Detail | Spec |
+|--------|------|
+| Node locations | Tokyo, Ashburn, Frankfurt |
+| Execution latency | Sub-500ms |
+| Cloud spend | $0 — physical infrastructure only |
+| Current chains | Solana, Base |
+| MEV protection | Default on every trade |
+
+<Info>
+  Omnera's infrastructure was built by Chris (CTO), who previously founded Sauce Servers — a multi-million dollar Solana HFT infrastructure company running sub-2ms latency on physical nodes globally.
+</Info>
+
+## How It Works
+
+<Steps>
+  <Step title="You See an Opportunity">
+    The feed surfaces a trade on any supported chain.
+  </Step>
+  <Step title="One Tap">
+    Tap to execute. Omnera determines the optimal route automatically.
+  </Step>
+  <Step title="Atomic Execution">
+    The trade executes atomically. Either it all happens, or none of it does. No stuck funds.
+  </Step>
+  <Step title="You Get Native Assets">
+    No wrapped tokens. You receive native assets on the destination chain.
+  </Step>
+</Steps>
+
+## Cross-Chain in the Feed
+
+Cross-chain execution isn't a separate feature. It's invisible in the feed experience.
+
+When the feed surfaces an opportunity, you don't need to think about which chain it's on. You don't need to bridge. You don't need to switch wallets. The feed shows you what's relevant. You tap. It executes.
+
+The chain is an implementation detail. The trade is what matters.
+
+## Current Chains
+
+| Chain | Status |
+|-------|--------|
+| Solana | Live |
+| Base | Live |
+| More chains | Coming |
+
+## No Bridge Risk
+
+Bridges have lost billions to hacks. Omnera's cross-chain execution eliminates the traditional bridge attack surface. Your assets move through execution, not custody.
+
+## Fee Structure
+
+| Fee Type | Rate |
+|----------|------|
+| Solana trading fees | Up to 0.5% |
+| Cross-chain execution spread | Up to 0.38% |
+
+No subscriptions. No hidden fees. You pay when you trade.
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="How is this different from a bridge?" icon="bridge-water">
+    Bridges custody your assets during transfer. Omnera executes trades atomically without holding your funds. No bridge risk, no wrapped tokens.
+  </Accordion>
+  <Accordion title="Why is it so fast?" icon="gauge-high">
+    Physical nodes in Tokyo, Ashburn, and Frankfurt. Bare metal. No cloud latency. Purpose-built for trading execution.
+  </Accordion>
+  <Accordion title="What about more chains?" icon="link">
+    Ethereum, Arbitrum, and additional L2s are planned. The feed will surface opportunities across all supported chains as they come online.
+  </Accordion>
+  <Accordion title="Is MEV protection included?" icon="shield">
+    Yes. Every trade — single-chain or cross-chain — is MEV-protected by default.
+  </Accordion>
+</AccordionGroup>
