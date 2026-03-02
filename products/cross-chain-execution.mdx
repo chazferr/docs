@@ -5,25 +5,24 @@ description: "Solana. Base. Sub-500ms. One tap."
 
 ## The Problem
 
-Your funds are on Solana. The opportunity is on Base. Now you need to:
+Your funds are on Solana. The opportunity is on Base. To act on it, you typically need to:
 
 1. Find a bridge
-2. Hope it's not compromised
-3. Wait for the bridge transaction
-4. Get wrapped tokens you didn't want
-5. Swap wrapped tokens for native
-6. Finally make your trade
-7. Pay fees at every step
+2. Wait for the bridge transaction
+3. Receive wrapped tokens
+4. Swap wrapped tokens for native assets
+5. Make your trade
+6. Pay fees at every step
 
-**30+ minutes, multiple transactions, and you're still not sure if you got a good rate.**
+That process can take 30 minutes or more across multiple transactions.
 
 ## One Tap. Any Chain.
 
-Omnera handles cross-chain execution natively. See an opportunity on Base while holding SOL? One tap. Done.
+Omnera handles cross-chain execution natively. See an opportunity on Base while holding SOL? One tap.
 
 <CardGroup cols={2}>
   <Card title="Sub-500ms" icon="gauge-high">
-    Execution in under 500 milliseconds. Not minutes. Not seconds.
+    Execution in under 500 milliseconds.
   </Card>
   <Card title="No Bridges" icon="bridge-water">
     Direct cross-chain execution. No traditional bridging required.
@@ -31,26 +30,22 @@ Omnera handles cross-chain execution natively. See an opportunity on Base while 
   <Card title="No Wrapped Tokens" icon="gift">
     Native assets on the destination chain. Not synthetic versions.
   </Card>
-  <Card title="MEV-Protected" icon="shield">
-    Every cross-chain trade gets the same MEV protection as single-chain trades.
+  <Card title="Protected Execution" icon="shield">
+    Every cross-chain trade includes transaction protection by default.
   </Card>
 </CardGroup>
 
 ## Infrastructure
 
-This isn't a wrapper on someone else's RPC. Omnera runs bare-metal physical nodes.
+Omnera runs bare-metal physical nodes. No cloud dependencies.
 
 | Detail | Spec |
 |--------|------|
 | Node locations | Tokyo, Ashburn, Frankfurt |
 | Execution latency | Sub-500ms |
-| Cloud spend | $0 — physical infrastructure only |
+| Cloud spend | $0. Physical infrastructure only |
 | Current chains | Solana, Base |
-| MEV protection | Default on every trade |
-
-<Info>
-  Omnera's infrastructure was built by Chris (CTO), who previously founded Sauce Servers — a multi-million dollar Solana HFT infrastructure company running sub-2ms latency on physical nodes globally.
-</Info>
+| Transaction protection | Default on every trade |
 
 ## How It Works
 
@@ -69,13 +64,15 @@ This isn't a wrapper on someone else's RPC. Omnera runs bare-metal physical node
   </Step>
 </Steps>
 
+## Intent-Based Routing
+
+You express what you want. Omnera figures out how to execute it. You do not need to choose a route, select a bridge, or manage multiple transactions. The system handles routing based on your intent.
+
 ## Cross-Chain in the Feed
 
-Cross-chain execution isn't a separate feature. It's invisible in the feed experience.
+Cross-chain execution is not a separate feature. It is built into the feed experience.
 
-When the feed surfaces an opportunity, you don't need to think about which chain it's on. You don't need to bridge. You don't need to switch wallets. The feed shows you what's relevant. You tap. It executes.
-
-The chain is an implementation detail. The trade is what matters.
+When the feed surfaces an opportunity, you do not need to think about which chain it is on. You do not need to bridge. You do not need to switch wallets. You tap. It executes.
 
 ## Current Chains
 
@@ -85,9 +82,13 @@ The chain is an implementation detail. The trade is what matters.
 | Base | Live |
 | More chains | Coming |
 
-## No Bridge Risk
+## Perpetual Futures
 
-Bridges have lost billions to hacks. Omnera's cross-chain execution eliminates the traditional bridge attack surface. Your assets move through execution, not custody.
+Omnera surfaces perpetual futures contracts across supported venues. Perps let you take leveraged long or short positions on crypto assets without an expiry date.
+
+<Warning>
+  Perpetual futures involve leverage and carry significant risk of loss. Only trade with capital you can afford to lose. Omnera does not provide trading advice. All execution decisions are made by the user.
+</Warning>
 
 ## Fee Structure
 
@@ -102,7 +103,7 @@ No subscriptions. No hidden fees. You pay when you trade.
 
 <AccordionGroup>
   <Accordion title="How is this different from a bridge?" icon="bridge-water">
-    Bridges custody your assets during transfer. Omnera executes trades atomically without holding your funds. No bridge risk, no wrapped tokens.
+    Bridges custody your assets during transfer. Omnera executes trades atomically without holding your funds. No bridge risk. No wrapped tokens.
   </Accordion>
   <Accordion title="Why is it so fast?" icon="gauge-high">
     Physical nodes in Tokyo, Ashburn, and Frankfurt. Bare metal. No cloud latency. Purpose-built for trading execution.
@@ -110,7 +111,7 @@ No subscriptions. No hidden fees. You pay when you trade.
   <Accordion title="What about more chains?" icon="link">
     Ethereum, Arbitrum, and additional L2s are planned. The feed will surface opportunities across all supported chains as they come online.
   </Accordion>
-  <Accordion title="Is MEV protection included?" icon="shield">
-    Yes. Every trade — single-chain or cross-chain — is MEV-protected by default.
+  <Accordion title="Is transaction protection included?" icon="shield">
+    Yes. Every trade, single-chain or cross-chain, includes transaction protection by default.
   </Accordion>
 </AccordionGroup>
