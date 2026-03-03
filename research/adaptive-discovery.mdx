@@ -1,0 +1,68 @@
+---
+title: "Adaptive Discovery in Crypto Markets"
+description: "A research overview of the information problem in crypto trading and how behavioral personalization addresses it."
+---
+
+*Research overview — Omnera Labs*
+
+## Abstract
+
+The current generation of crypto trading terminals operates on a broadcast model of information distribution. Market signals — trending tokens, volume rankings, social velocity, migration events — are computed globally and delivered identically to all users. This paper argues that broadcast discovery is structurally disadvantageous to the majority of participants because it eliminates information asymmetry at the point of delivery. We describe an alternative approach based on behavioral observation and individualized ranking that restores informational differentiation without restricting access to underlying market data.
+
+## 1. The Information Symmetry Problem
+
+In traditional financial markets, information asymmetry is a well-studied phenomenon. Traders with superior information — faster data feeds, proprietary research, insider knowledge — consistently outperform those without. Regulation exists specifically to manage the boundaries of permissible information advantage.
+
+In crypto markets, a different dynamic has emerged. The raw data is abundant and largely public. On-chain activity, social signals, and market microstructure are visible to anyone willing to look. The asymmetry has shifted from *access* to *processing*. The traders who extract value are not those who see different data, but those who process the same data differently.
+
+Trading terminals have inadvertently worsened this dynamic. By aggregating, ranking, and presenting market data in a standardized format, they create a shared reality that all participants act on simultaneously. The result is systematic crowding: when everyone sees the same opportunity at the same time, the opportunity is priced before the average participant can act.
+
+## 2. Behavioral Signal as Differentiation
+
+Every trader generates a continuous stream of implicit behavioral data through their interactions with market information. This data is inherently private — no one else can observe what a specific trader looks at, how long they evaluate it, or what caused them to act or abstain.
+
+Behavioral data has several properties that make it valuable for personalization:
+
+**It is revealed, not declared.** Traders do not need to articulate their strategies or preferences. The system infers them from behavior. This captures patterns that traders themselves may not be consciously aware of — habitual attention to certain market cap ranges, implicit preference for certain chain ecosystems, consistent response to specific technical setups.
+
+**It is dynamic.** Behavioral patterns shift as market conditions change. A trader who focuses on memecoins during speculative cycles may shift to defensive perp positioning during drawdowns. The behavioral model captures these transitions naturally, without requiring manual reconfiguration.
+
+**It is high-dimensional.** The combination of attention patterns, decision patterns, temporal patterns, and execution patterns creates a behavioral fingerprint with enough dimensionality to meaningfully differentiate users. Two traders with similar explicit preferences (both trade Solana tokens) may have radically different behavioral profiles (one acts on early migration signals, the other acts on momentum confirmation).
+
+## 3. From Ranking to Relevance
+
+Traditional ranking systems order opportunities by a single global metric or a weighted composite of global metrics. Volume, price change, social mentions, and age are common inputs. These rankings answer the question: "What is happening in the market right now?"
+
+Relevance-based ranking answers a different question: "What in the market right now is most likely to matter to this specific trader?" The distinction is not semantic. It produces different outputs.
+
+A relevance ranking system requires two inputs: a model of the market (what opportunities exist) and a model of the user (what this user tends to act on). The market model is shared across all users. The user model is unique. The ranking output is the product of both.
+
+This approach does not withhold information. Every opportunity that exists in the market model is accessible to every user. The system changes the *order of presentation*, not the *availability of data*. A token ranked #1 for one trader exists at a lower rank for another, but it is never hidden.
+
+## 4. Implications for Market Microstructure
+
+If a meaningful fraction of traders uses personalized discovery, the microstructural effects are significant:
+
+**Reduced crowding.** Different traders acting on different signals at different times reduces the systematic concentration of order flow that occurs when all participants see the same trending list simultaneously.
+
+**Extended price discovery.** When information is processed heterogeneously, price discovery happens over a longer window rather than in a single spike. This is healthier for market structure and reduces the advantage of raw execution speed.
+
+**Increased market efficiency.** Opportunities that would otherwise remain undiscovered — because they do not meet the threshold for global trending lists — are surfaced to the traders most likely to evaluate and act on them. Capital flows more efficiently when routing is personalized.
+
+## 5. Limitations and Open Questions
+
+Several challenges remain in the implementation of behavioral personalization for trading:
+
+**Cold start.** New users with no behavioral history must be bootstrapped onto a useful feed quickly. The current approach uses global signal as the default, transitioning to personalized ranking as behavioral data accumulates. The optimal transition curve is an active area of development.
+
+**Feedback loops.** If the system surfaces opportunities based on past behavior, it may reinforce existing patterns and prevent traders from discovering new categories of opportunity. Controlled exploration — injecting a percentage of non-personalized signal — is one mitigation approach.
+
+**Adversarial behavior.** Sophisticated users may attempt to manipulate their behavioral profile to extract specific outcomes from the ranking system. The degree to which this is possible and the countermeasures required are under investigation.
+
+**Privacy.** Behavioral profiles contain sensitive trading intelligence. The architectural separation between behavioral data and execution data — and the association with wallet addresses rather than personal identity — provides a baseline of privacy, but the sensitivity of the data warrants continued attention.
+
+## 6. Conclusion
+
+The broadcast model of crypto market discovery is a structural bottleneck that systematically disadvantages the majority of participants. Behavioral personalization offers a path to informational differentiation that does not rely on faster data feeds, insider access, or technological advantage in execution speed. By observing how individual traders interact with markets and reflecting those patterns back as individualized ranking, the system restores a form of edge that scales with engagement rather than with capital or infrastructure.
+
+Omnera is the implementation of this thesis.

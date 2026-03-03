@@ -1,0 +1,91 @@
+---
+title: "System Architecture"
+description: "The technical blueprint connecting Omnera's behavioral engine, discovery surface, and execution layer."
+---
+
+## Architectural Overview
+
+Omnera is composed of four interconnected systems that operate in concert to deliver personalized discovery and unified execution. Each system has a distinct responsibility and a clear interface boundary.
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   Omnera Client                      │
+│          (Feed + Execution Interface)                │
+└──────────┬──────────────────┬───────────────────────┘
+           │                  │
+           ▼                  ▼
+┌──────────────────┐  ┌──────────────────────────────┐
+│  Behavioral      │  │  Execution Router             │
+│  Engine           │  │                               │
+│                   │  │  ┌────────┐ ┌──────┐ ┌─────┐ │
+│  - Event ingestion│  │  │  Spot  │ │Perps │ │Pred │ │
+│  - Profile store  │  │  │  AMMs  │ │ DEXs │ │Mkts │ │
+│  - Relevance calc │  │  └────────┘ └──────┘ └─────┘ │
+└────────┬─────────┘  └──────────┬───────────────────┘
+         │                       │
+         ▼                       ▼
+┌──────────────────┐  ┌──────────────────────────────┐
+│  Discovery        │  │  Settlement Layer             │
+│  Engine           │  │                               │
+│                   │  │  - Cross-chain bridging       │
+│  - Market indexer │  │  - Atomic transaction         │
+│  - Ranking system │  │    composition                │
+│  - Feed assembly  │  │  - On-chain confirmation      │
+└──────────────────┘  └──────────────────────────────┘
+```
+
+## Component Responsibilities
+
+### 1. Market Indexer
+
+The market indexer maintains a real-time view of on-chain activity across all supported chains and venues. It ingests:
+
+- Token creation, migration, and listing events
+- Price and volume data from AMMs and orderbook exchanges
+- Funding rates and open interest from perpetual futures venues
+- Outcome pricing and volume from prediction markets
+- Social signal aggregated from public feeds
+
+The indexer normalizes this data into a unified schema that is chain-agnostic. A token on Solana and a token on Base are represented in the same format. A perpetual futures pair on Hyperliquid and one on a competing venue are comparable within the same ranking context.
+
+The indexer is the foundation layer. Without accurate, low-latency market data, neither personalization nor execution routing can function.
+
+### 2. Behavioral Engine
+
+The behavioral engine (described in detail on the [Behavioral Engine](/architecture/behavioral-engine) page) processes interaction events from the client in real time. It maintains a per-wallet profile store and exposes a relevance scoring API that the discovery engine queries when assembling the feed.
+
+The engine operates statelessly with respect to sessions — it does not track session boundaries. It processes events as a continuous stream and updates the profile vector incrementally. This means that a trader who evaluates three tokens and executes one within a single session will see the feed adjust before the session ends.
+
+### 3. Discovery Engine
+
+The discovery engine combines the market indexer's global state with the behavioral engine's per-user relevance scores to produce the ranked feed. It operates on a pull model — each time the client requests a feed update, the discovery engine computes a fresh ranking.
+
+The ranking computation is lightweight by design. The expensive work — maintaining market state and computing behavioral profiles — is done continuously by the indexer and behavioral engine respectively. The discovery engine performs a merge-and-rank operation that completes in milliseconds.
+
+### 4. Execution Router
+
+The execution router (described in detail on the [Execution Routing](/architecture/execution-routing) page) translates trading intent into executed transactions. It maintains a real-time model of available venues, their liquidity, and their settlement characteristics.
+
+The router is the only component that interacts with external protocols and chains. All other components operate within Omnera's own infrastructure. This separation ensures that the discovery and personalization systems are not affected by the latency or reliability characteristics of external execution venues.
+
+## Data Flow
+
+A complete cycle from feed load to trade execution follows this path:
+
+1. **Client requests feed.** The discovery engine is queried with the trader's wallet address.
+2. **Discovery engine fetches market state** from the indexer and **relevance scores** from the behavioral engine.
+3. **Ranked feed is returned** to the client with pre-computed execution paths for each item.
+4. **Trader interacts with feed.** Interaction events (opens, skips, time-on-page) stream to the behavioral engine in real time.
+5. **Trader initiates execution.** The client sends the trading intent to the execution router.
+6. **Router constructs and submits transaction.** The appropriate venue is selected, the order is constructed, and the transaction is submitted for on-chain settlement.
+7. **Settlement confirmation** is returned to the client and recorded by the indexer.
+
+## Self-Custody Model
+
+Omnera is fully self-custodial at the execution layer. At no point do user funds pass through Omnera-controlled wallets. All transactions are signed by the user's wallet and settled directly on-chain.
+
+The behavioral engine and discovery surface operate on metadata — interaction events, not funds. The only on-chain interaction Omnera initiates is the transaction constructed by the execution router, which is signed and broadcast by the user's wallet.
+
+<Note>
+  The architectural separation between observation (behavioral engine), presentation (discovery engine), and action (execution router) is intentional. Each system can be developed, scaled, and audited independently. A failure in the behavioral engine does not affect execution. A failure in the execution router does not affect discovery. The systems degrade gracefully rather than failing catastrophically.
+</Note>

@@ -1,0 +1,56 @@
+---
+title: "Order Types"
+description: "Supported order types across spot, perpetual futures, and prediction markets on Omnera."
+---
+
+## Overview
+
+Omnera supports multiple order types across execution venues. The available order types depend on the instrument (spot, perps, or prediction markets) and the capabilities of the underlying venue.
+
+## Spot Orders
+
+| Order Type | Description | Behavior |
+|-----------|-------------|----------|
+| Market | Execute immediately at the best available price | Fills at current market price. Subject to slippage based on size and liquidity depth. |
+| Limit | Execute at a specified price or better | Rests until the market reaches the target price. May partially fill. |
+
+Spot orders are routed to AMMs or DEX aggregators. For AMM execution, "limit" behavior is approximated through conditional execution — the transaction reverts if the price exceeds the specified threshold.
+
+## Perpetual Futures Orders
+
+| Order Type | Description | Behavior |
+|-----------|-------------|----------|
+| Market | Open or close a position immediately | Fills against the orderbook at the best available price. |
+| Limit | Open or close at a specified price | Rests on the orderbook until filled or cancelled. |
+| Stop Market | Trigger a market order when price reaches a threshold | Used for stop-losses. Triggers a market order when the mark price crosses the stop price. |
+| Stop Limit | Trigger a limit order when price reaches a threshold | Triggers a limit order at a specified price when the mark price crosses the stop price. |
+| Take Profit | Close a position at a specified profit target | Functionally similar to a limit close, but expressed as a profit target relative to entry. |
+
+Order type availability depends on the underlying perps venue. The execution router selects order types compatible with the routed venue and presents only available options to the trader.
+
+## Prediction Market Orders
+
+| Order Type | Description | Behavior |
+|-----------|-------------|----------|
+| Market | Purchase outcome shares at the current price | Fills at the current implied probability. Subject to slippage on large sizes. |
+| Limit | Purchase outcome shares at a specified maximum price | Rests until the market price reaches the specified level. |
+
+## Slippage Protection
+
+All market orders include configurable slippage tolerance. The default slippage is set conservatively. The trader can adjust it before confirmation.
+
+If price movement during execution exceeds the slippage tolerance, the transaction reverts and no funds are spent (gas fees may still apply depending on the chain).
+
+## Time-in-Force
+
+For order types that rest (limit, stop), the following time-in-force options may be available depending on the venue:
+
+| Option | Description |
+|--------|-------------|
+| GTC (Good Till Cancelled) | Remains active until filled or manually cancelled |
+| IOC (Immediate or Cancel) | Fills whatever is available immediately, cancels the remainder |
+| FOK (Fill or Kill) | Fills the entire order immediately or cancels entirely |
+
+<Note>
+  Omnera presents a unified order interface, but the specific behavior of each order type is determined by the underlying execution venue. Venue-specific details are shown in the execution confirmation before each trade.
+</Note>

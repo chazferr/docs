@@ -1,0 +1,45 @@
+---
+title: "Perpetual Futures"
+description: "Trade leveraged perpetual futures through Omnera's unified execution surface."
+---
+
+## Overview
+
+Omnera integrates perpetual futures execution directly into the discovery feed. When the system surfaces a perps opportunity — a funding rate divergence, a liquidation cascade, a technical setup on a supported pair — the trader can open a leveraged position without leaving the feed or connecting to a separate exchange.
+
+## How Perps Work on Omnera
+
+Omnera routes perpetual futures orders to integrated decentralized exchanges. The trader interacts with Omnera's unified interface. The underlying execution occurs on the perps venue with the best available conditions for the specific pair and size.
+
+**Position lifecycle:**
+
+1. **Entry.** Select long or short, set leverage and size. The execution router selects the optimal perps venue and constructs the order.
+2. **Management.** Open positions are visible in the Portfolio view. The system surfaces relevant market intelligence for assets you hold — correlated movements, funding rate changes, approaching liquidation levels.
+3. **Exit.** Close positions partially or fully. The router handles the close on the same venue where the position was opened.
+
+## Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| Leverage | Configurable per-trade. Maximum leverage depends on the underlying venue and pair. |
+| Margin | Cross-margin and isolated margin options, depending on venue support. |
+| Order types | Market, limit, and stop orders. See [Order Types](/exchange/order-types) for details. |
+| Funding rate | Perpetual futures use periodic funding payments between longs and shorts. Rates vary by venue and are displayed before execution. |
+
+## Liquidation
+
+If a position's margin falls below the maintenance requirement of the underlying venue, it is subject to liquidation. Omnera displays real-time margin health and liquidation price for all open positions.
+
+Liquidation is handled by the underlying perps venue, not by Omnera. The specific liquidation mechanics — progressive deleveraging, insurance funds, socialized loss — depend on the venue where the position is held.
+
+<Warning>
+  Perpetual futures are leveraged instruments. Losses can exceed your initial margin. Liquidation can result in total loss of the margin allocated to a position. Trade only with capital you can afford to lose.
+</Warning>
+
+## Integrated Venues
+
+Omnera routes perps execution to decentralized exchanges with deep liquidity and robust risk management. Venue selection is automatic based on the pair, size, and current market conditions. The specific venues integrated are listed in the execution confirmation before each trade.
+
+<Note>
+  Omnera does not operate its own perpetual futures exchange. It routes orders to existing decentralized venues. Counterparty risk, funding rates, and liquidation mechanics are determined by the underlying venue.
+</Note>

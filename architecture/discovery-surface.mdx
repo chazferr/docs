@@ -1,0 +1,50 @@
+---
+title: "Discovery Surface"
+description: "How Omnera ranks and presents market opportunities differently for each trader."
+---
+
+## Feed as Execution Surface
+
+The Omnera feed is not an information dashboard. It is an execution surface — a ranked stream of opportunities where every item can be acted on directly, without navigating to a separate trading interface, connecting to a different chain, or selecting a venue.
+
+The feed synthesizes three inputs:
+
+1. **Global market state.** Real-time data across spot markets, perpetual futures, and prediction markets on all supported chains. Price, volume, liquidity depth, social velocity, on-chain activity, and structural events (migrations, listings, funding rate shifts).
+
+2. **Behavioral profile.** The accumulated model of the individual trader's attention, decision, and temporal patterns, as constructed by the behavioral engine.
+
+3. **Relevance scoring.** A per-user ranking function that combines global market state with the behavioral profile to produce a personalized ordering. Tokens and opportunities with high global signal but low personal relevance are deprioritized. Opportunities with moderate global signal but high personal relevance are surfaced.
+
+## Ranking Architecture
+
+The feed does not simply filter the global feed. It reorders it. This is a critical distinction.
+
+Filtering removes items. Reordering preserves the full opportunity set but changes the sequence in which it is presented. A token that would rank #47 on a global trending list might rank #3 on a specific trader's feed because its characteristics match that trader's behavioral fingerprint. The token was never hidden from anyone — it was simply buried in consensus ordering for most users and elevated for one.
+
+The ranking function operates on a scoring model with three weighted components:
+
+**Relevance score.** How closely does this opportunity match the trader's historical attention and execution patterns? Computed from the behavioral profile vector. This is the primary differentiator between users.
+
+**Timeliness score.** How fresh is the signal? Opportunities decay. A token that migrated 3 minutes ago is a different proposition than one that migrated 30 minutes ago. The system applies time-decay weighting calibrated to the asset class — faster decay for memecoins, slower decay for perp setups.
+
+**Quality score.** Independent of personalization, does this opportunity meet baseline quality thresholds? Liquidity depth, contract verification, holder distribution, and on-chain structural integrity are evaluated to prevent low-quality or potentially malicious tokens from surfacing regardless of relevance match.
+
+## Feed Modes
+
+The feed supports multiple presentation contexts, each drawing from the same underlying ranking engine:
+
+**Pulse.** Real-time stream of new market activity. Highest velocity, highest noise. Personalization acts as a noise filter — surfacing the signal within the chaos that matches your specific patterns.
+
+**Discover.** Curated opportunity set refreshed at longer intervals. Lower velocity, higher conviction. The system applies stricter quality and relevance thresholds to surface opportunities that warrant deeper evaluation.
+
+**Portfolio.** Active positions with contextual intelligence. The system surfaces related opportunities, correlated assets, and risk signals based on what you currently hold — not generic portfolio tracking, but position-aware discovery.
+
+## Execution Integration
+
+Every item in the feed includes an execution path. When a trader identifies an opportunity, the transition to execution is not a redirect — it is a state change within the same interface. The feed item expands to reveal execution controls: order type, size, and confirmation. The system has already determined the optimal routing (which chain, which venue, which execution method) before the trader clicks.
+
+This integration is what distinguishes a discovery surface from a discovery dashboard. Dashboards inform. Surfaces execute.
+
+<Info>
+  The ranking model is not static. As new interaction events accumulate, the relevance scoring recalibrates in real time within each session. The feed you see at the start of a session may differ from the feed 20 minutes later, because the system has incorporated your in-session behavior.
+</Info>

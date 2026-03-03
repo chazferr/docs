@@ -31,24 +31,30 @@
             ]
           },
           {
-            "group": "How It Works",
+            "group": "How Omnera Works",
             "pages": [
-              "products/personalized-feed",
-              "products/pre-trade-intelligence"
+              "architecture/design-overview",
+              "architecture/behavioral-engine",
+              "architecture/discovery-surface",
+              "architecture/execution-routing",
+              "architecture/system-architecture"
             ]
           },
           {
-            "group": "Execution",
+            "group": "Omnera Exchange",
             "pages": [
-              "products/cross-chain-execution",
-              "products/perpetual-futures",
-              "products/prediction-markets"
+              "exchange/cross-chain-execution",
+              "exchange/perpetual-futures",
+              "exchange/prediction-markets",
+              "exchange/order-types",
+              "exchange/fee-structure"
             ]
           },
           {
-            "group": "Fees",
+            "group": "Research",
             "pages": [
-              "products/fees"
+              "research/adaptive-discovery",
+              "research/execution-optimization"
             ]
           },
           {
@@ -77,7 +83,7 @@
         {
           "anchor": "Join Waitlist",
           "href": "https://omnera.io/contact",
-          "icon": "rocket"
+          "icon": "arrow-right"
         },
         {
           "anchor": "Community",

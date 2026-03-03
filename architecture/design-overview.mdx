@@ -1,0 +1,36 @@
+---
+title: "Design Overview"
+description: "The architectural thesis behind Omnera and the problem it solves."
+---
+
+## The Consensus Problem
+
+Every major trading terminal — Axiom, BullX, GMGN, Photon — distributes the same information to every user at the same time. Trending lists, volume rankings, migration alerts, and social signals are computed globally and served identically. When a token surfaces on these platforms, it surfaces for everyone simultaneously.
+
+This creates a structural problem. By the time a signal reaches the average user, it has already been priced by the fastest participants. The information is not wrong. It is simply no longer differentiated. Discovery platforms have optimized for popularity rather than relevance, and the result is a system where individual edge is systematically eliminated.
+
+Omnera is designed around a different premise: **discovery should be personal, and execution should be unified.**
+
+## Two Systems, One Surface
+
+Omnera integrates two distinct systems into a single interface:
+
+**1. An adaptive behavioral engine** that learns how each trader interacts with the market — what they examine, what they ignore, what they almost execute, what they return to — and uses this signal to rank and surface opportunities differently for each user. Two traders opening Omnera at the same moment will not see the same feed.
+
+**2. A cross-chain execution layer** that routes trading intent to the optimal venue across spot markets, perpetual futures, and prediction markets, settling atomically regardless of the underlying chain. The feed is not a dashboard that links to separate execution environments. It is a unified surface where discovery and execution are the same action.
+
+## Design Principles
+
+The architecture is governed by four constraints:
+
+**Divergence over consensus.** The system is designed to produce different outputs for different users given the same market state. This is the inverse of how most trading infrastructure works, where consistency and shared state are the goals. In Omnera, divergence is the product.
+
+**Observation over configuration.** The behavioral model does not ask users to set preferences, select categories, or configure filters. It observes actual behavior — the implicit signals that traders generate through interaction — and infers relevance from patterns that users themselves may not be consciously aware of.
+
+**Execution as a first-class primitive.** Discovery without execution is information. Discovery with execution is alpha. The system is designed so that the transition from seeing an opportunity to acting on it requires zero context-switching, zero bridging, and zero venue selection. The user expresses intent. The system handles routing.
+
+**Profile compounding.** The behavioral model improves with every session. Early sessions produce broad signal. Subsequent sessions narrow. The system rewards sustained usage not through points or incentives, but through an objectively better experience — a feed that becomes increasingly calibrated to the individual.
+
+<Info>
+  The following pages walk through each component in detail: the behavioral engine that powers personalization, the discovery surface that presents it, the execution layer that acts on it, and the system architecture that connects them.
+</Info>

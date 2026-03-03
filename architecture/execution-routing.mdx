@@ -1,0 +1,57 @@
+---
+title: "Execution Routing"
+description: "How Omnera routes trading intent to the optimal venue across chains and settles atomically."
+---
+
+## Intent-Based Execution
+
+When a trader acts on an opportunity in the Omnera feed, they express intent — not a specific order on a specific venue. The system translates that intent into the optimal execution path.
+
+This is a fundamental departure from how most trading terminals work. In a conventional terminal, the user must know which chain the asset lives on, which DEX has the deepest liquidity, whether to use a limit or market order, and how to manage slippage. In Omnera, the user expresses what they want to do. The system determines how to do it.
+
+## Routing Logic
+
+The execution router evaluates each trading intent against a set of real-time parameters:
+
+**Venue selection.** For any given asset, multiple execution venues may be available — an AMM on Solana, an orderbook on a perps exchange, a prediction market on an L2. The router evaluates each venue on three axes: available liquidity at the intended size, expected slippage, and settlement time. The venue with the best composite score receives the order.
+
+**Chain routing.** If the optimal venue exists on a different chain from the trader's current wallet position, the router handles the cross-chain movement. The trader does not bridge assets manually. The system constructs the bridging, swap, and settlement steps as a single atomic operation.
+
+**Order construction.** Based on the asset type and venue, the router constructs the appropriate order type. A spot purchase on an AMM requires different parameters than a perpetual futures position on an orderbook exchange. The router abstracts this complexity — the trader sees a unified execution interface regardless of the underlying venue mechanics.
+
+## Atomic Settlement
+
+Omnera settles execution atomically. This means that all steps in a cross-chain trade either complete together or revert together. There is no intermediate state where a trader has bridged assets but not yet executed, or executed on one leg of a trade but not the other.
+
+Atomic settlement eliminates several categories of risk that plague manual cross-chain trading:
+
+- **Bridge risk.** Assets do not sit in an intermediate bridge state waiting for confirmation.
+- **Partial execution risk.** Multi-step trades do not leave the trader in an incomplete position.
+- **Timing risk.** The price at the moment of intent is the price at execution. There is no delay between the trader's decision and the settlement of the trade.
+
+## Supported Execution Types
+
+The router currently supports three categories of execution:
+
+| Type | Description | Venues |
+|------|-------------|--------|
+| Spot | Direct token purchase or sale at market or limit price | AMMs and DEX aggregators across supported chains |
+| Perpetual Futures | Leveraged long or short positions on supported pairs | Integrated perps venues with cross-margin support |
+| Prediction Markets | Binary or multi-outcome position entry | Supported prediction market protocols |
+
+Each execution type has distinct parameters (leverage for perps, outcome selection for predictions, slippage tolerance for spot), but the interface presents them through a unified control surface. The trader selects what to do. The system handles the venue-specific mechanics.
+
+## Execution Transparency
+
+While the routing is automated, it is not opaque. Before confirming any trade, the trader sees:
+
+- The selected venue and chain
+- Expected execution price and slippage
+- Gas and fee estimates
+- Settlement path (direct, cross-chain, or multi-hop)
+
+The trader retains full control to accept or reject the proposed execution. Omnera routes intelligently but does not execute without explicit confirmation.
+
+<Warning>
+  Cross-chain execution involves inherent risks including bridge protocol risk, smart contract risk, and potential price movement during settlement. Omnera optimizes routing to minimize these risks but cannot eliminate them entirely. Always review the proposed execution path before confirming.
+</Warning>

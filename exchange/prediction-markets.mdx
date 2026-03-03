@@ -1,0 +1,45 @@
+---
+title: "Prediction Markets"
+description: "Take positions on real-world and crypto-native outcomes through Omnera's prediction market integration."
+---
+
+## Overview
+
+Omnera integrates prediction market execution into the same discovery surface as spot and perpetual futures trading. When the behavioral engine identifies that a trader's profile shows affinity for event-driven positioning — elections, protocol upgrades, token launches, macroeconomic decisions — prediction market opportunities are surfaced alongside traditional trading signals.
+
+## How It Works
+
+Prediction markets allow traders to take positions on the outcome of future events. Each market resolves to a binary or multi-outcome result, and shares are priced between 0 and 1 (representing the market's implied probability of that outcome occurring).
+
+**Example:** A market on whether ETH will exceed $5,000 by a specific date. Shares for "Yes" trading at 0.35 imply a 35% market-consensus probability. If the outcome resolves to "Yes," each share pays 1.00. If "No," each share pays 0.00.
+
+## Execution
+
+Prediction market orders are routed through the same execution router as spot and perps trades. The trader selects an outcome, sets a position size, and confirms. The router handles venue selection and order construction.
+
+| Parameter | Description |
+|-----------|-------------|
+| Outcome | The specific outcome being purchased (e.g., "Yes" or "No") |
+| Size | Number of shares or dollar amount to allocate |
+| Price | Current market price (0-1) representing implied probability |
+| Max cost | Maximum amount the trader is willing to pay, including slippage |
+
+## Resolution
+
+Prediction markets resolve based on the rules defined by the underlying protocol. Resolution is typically oracle-based or governance-based, depending on the venue. Once resolved:
+
+- Winning shares pay out at 1.00 per share
+- Losing shares pay out at 0.00
+- Payouts are settled on-chain
+
+Omnera does not control resolution. The resolution mechanism, dispute process, and settlement timing are determined by the prediction market protocol.
+
+## Discovery Integration
+
+Prediction markets are not siloed into a separate section of the feed. They appear alongside spot and perps opportunities, ranked by the same behavioral relevance model. A trader whose profile indicates interest in macro events will see prediction markets surfaced naturally within their feed. A trader with no history of prediction market interaction will see them less prominently.
+
+This integration reflects Omnera's core principle: the feed should present the best opportunity for each individual trader, regardless of the instrument type.
+
+<Note>
+  Prediction market availability depends on the underlying protocols integrated at any given time. Not all events or outcomes may be available. Market liquidity varies by event and proximity to resolution.
+</Note>

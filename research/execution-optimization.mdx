@@ -1,0 +1,87 @@
+---
+title: "Cross-Chain Execution Optimization"
+description: "Research overview of optimal execution routing across fragmented DeFi liquidity venues."
+---
+
+*Research overview — Omnera Labs*
+
+## Abstract
+
+Decentralized finance liquidity is fragmented across chains, protocols, and instrument types. A trader seeking to execute on the best available terms must navigate an increasingly complex landscape of AMMs, orderbook exchanges, bridges, and aggregators. This paper outlines the optimization problem that Omnera's execution router addresses: given a trading intent (asset, direction, size), find the execution path that minimizes cost and settlement time across a multi-chain, multi-venue environment.
+
+## 1. The Fragmentation Problem
+
+As of early 2026, meaningful trading liquidity exists across at least a dozen distinct blockchain networks. Within each chain, liquidity is further fragmented across dozens of decentralized exchanges, each with different fee structures, liquidity profiles, and settlement characteristics.
+
+For spot trading alone, a single token may have liquidity on Raydium (Solana), Uniswap (Ethereum and L2s), and multiple aggregators. For perpetual futures, venues like Hyperliquid, drift, and others offer the same pair with different spreads, funding rates, and margin models.
+
+The result is that the "best" execution for any given trade is a function of many variables, and the optimal path frequently crosses chain boundaries.
+
+## 2. Execution Cost Model
+
+Omnera's router evaluates execution paths against a composite cost model:
+
+**Price impact.** The expected slippage given the trade size and the venue's liquidity depth at the target price. For AMMs, this is a deterministic function of pool reserves. For orderbook venues, it depends on current book depth.
+
+**Fee load.** The sum of all fees incurred along the execution path: DEX swap fees, bridge protocol fees, and Omnera's routing fee. A path with lower slippage but higher fees may be more expensive than a path with moderate slippage and minimal fees.
+
+**Settlement time.** Cross-chain execution introduces latency. Bridge settlement can take seconds to minutes depending on the bridge protocol and destination chain. The router weights faster settlement paths, particularly for time-sensitive trades.
+
+**Revert risk.** The probability that the transaction fails and must be retried. Bridge congestion, smart contract errors, and gas price volatility all contribute to revert risk. Routes with higher historical reliability are preferred.
+
+The composite cost is:
+
+```
+C(path) = price_impact + fees + time_penalty(settlement_time) + risk_penalty(revert_probability)
+```
+
+The router evaluates all viable paths and selects the one with the lowest composite cost.
+
+## 3. Path Construction
+
+For a same-chain spot trade, the path is straightforward: route through the AMM or aggregator with the best price at the target size.
+
+For cross-chain execution, the path becomes a multi-step operation:
+
+1. **Source chain exit.** Convert the trader's held asset into a bridgeable form (if necessary).
+2. **Bridge transit.** Transfer value from the source chain to the destination chain.
+3. **Destination chain entry.** Swap the bridged asset for the target asset on the destination chain.
+
+Each step introduces cost and latency. The router's optimization problem is to minimize the total cost across all steps, subject to the constraint that the entire operation settles atomically.
+
+For perpetual futures and prediction markets, the path may involve a single-chain operation (deposit margin, place order) or a cross-chain operation (bridge collateral, then deposit and trade). The router selects the appropriate path based on where the trader's capital currently resides and where the optimal venue is.
+
+## 4. Atomicity Constraints
+
+Omnera requires that cross-chain execution paths settle atomically — all steps complete or all revert. This constraint eliminates the risk of partial execution but imposes architectural requirements:
+
+**Transaction bundling.** Multi-step operations must be composed into a single logical transaction from the trader's perspective, even if the underlying implementation involves multiple on-chain transactions.
+
+**Conditional execution.** Each step is conditioned on the success of the previous step. If a bridge transfer fails, the subsequent swap is never attempted. If a swap fails, the bridged assets are returned to the source.
+
+**Timeout handling.** Bridge transfers may take longer than expected. The router sets timeout parameters and reverts the operation if settlement does not complete within the expected window.
+
+## 5. Dynamic Venue Selection
+
+The router does not maintain a static ranking of venues. Venue quality is evaluated in real time based on:
+
+- Current liquidity depth at the target price
+- Recent fill quality (actual execution price vs. quoted price)
+- Current network congestion on the venue's chain
+- Bridge availability and queue depth for cross-chain paths
+
+A venue that was optimal 30 seconds ago may not be optimal now. The router recomputes at the moment of execution, not at the moment of feed presentation.
+
+## 6. Open Problems
+
+**MEV exposure.** Cross-chain transactions that involve multiple on-chain steps are potentially vulnerable to MEV extraction at each step. Mitigation strategies include private transaction submission, MEV-aware routing, and timing-based obfuscation.
+
+**Bridge security.** The router depends on the security of bridge protocols. Bridge exploits have historically been among the largest losses in DeFi. Route selection incorporates bridge security reputation, but this is an imperfect heuristic.
+
+**Liquidity prediction.** The router evaluates current liquidity, but execution occurs in the future (even if only seconds later). Predicting liquidity availability at execution time, particularly on volatile pairs, is an active research area.
+
+**Multi-leg optimization.** Some trades may benefit from intermediate hops — routing through a stablecoin, or splitting execution across multiple venues. The combinatorial complexity of multi-leg optimization grows rapidly and requires efficient pruning heuristics.
+
+## 7. Conclusion
+
+Cross-chain execution optimization is a constraint satisfaction problem with real-time inputs and meaningful economic consequences. Omnera's router approaches this as a continuous optimization task rather than a one-time routing decision, recomputing paths at execution time to reflect the current state of a dynamic multi-chain environment. The result is execution quality that improves with the breadth of venue integration and the accuracy of the cost model.

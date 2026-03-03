@@ -1,0 +1,64 @@
+---
+title: "Fee Structure"
+description: "Omnera's fee model across spot, perpetual futures, and prediction market execution."
+---
+
+## Overview
+
+Omnera's fee model is transparent and predictable. Fees are applied per execution and vary by instrument type. There are no subscription fees, no platform access fees, and no fees for using the discovery surface or behavioral engine.
+
+You only pay when you trade.
+
+## Fee Schedule
+
+| Instrument | Fee | Applied To |
+|-----------|-----|------------|
+| Spot | 1% of trade value | Applied on each buy and sell |
+| Perpetual Futures | Venue fee + Omnera routing fee | Venue fee determined by underlying exchange. Omnera adds a routing fee on top. |
+| Prediction Markets | Venue fee + Omnera routing fee | Venue fee determined by underlying protocol. Omnera adds a routing fee on top. |
+| Cross-chain bridging | Bridge protocol fee | Determined by the bridge used. Omnera does not add additional fees on bridging. |
+
+## Spot Fee Example
+
+A trader buys 10 SOL worth of a token through Omnera.
+
+```
+Trade value:          10 SOL
+Omnera fee (1%):       0.1 SOL
+Network gas fee:      ~0.000005 SOL
+─────────────────────────────────
+Total cost:           ~10.1 SOL
+Tokens received:       Based on 9.9 SOL executed after fee
+```
+
+## Perps Fee Example
+
+A trader opens a 5x leveraged long position worth 1,000 USDC on a perpetual futures pair.
+
+```
+Notional value:       1,000 USDC
+Margin deposited:       200 USDC
+Venue taker fee:        0.05% = 0.50 USDC (varies by venue)
+Omnera routing fee:     Included in displayed execution price
+Network gas fee:        Variable
+─────────────────────────────────
+Total opening cost:     Margin + venue fee + gas
+```
+
+Funding payments are ongoing and determined by the underlying perps venue. Omnera does not add to or modify funding rates.
+
+## What Omnera Does Not Charge For
+
+- **Feed access.** The personalized discovery surface is free to use.
+- **Behavioral profiling.** The engine runs at no cost to the user.
+- **Portfolio tracking.** Viewing positions, P&L, and market intelligence incurs no fee.
+- **Wallet connection.** Connecting and disconnecting wallets is free.
+- **Cancelled orders.** Orders that do not execute incur no Omnera fee (network gas may apply for on-chain cancellations).
+
+## Referral Fee Sharing
+
+Details on the referral program and fee sharing structure will be published as the program launches. See [Roadmap](/roadmap/overview) for timing.
+
+<Note>
+  All fees are displayed in the execution confirmation before the trader signs the transaction. The confirmed fee is the actual fee — there are no hidden charges or post-execution adjustments.
+</Note>

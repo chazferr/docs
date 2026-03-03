@@ -1,0 +1,37 @@
+---
+title: "Cross-Chain Execution"
+description: "How Omnera executes trades across multiple chains from a single interface."
+---
+
+## Overview
+
+Omnera supports execution across multiple blockchain networks from a single wallet connection. The trader does not need to bridge assets, switch networks, or manage multiple wallet connections. When the execution router identifies the optimal venue for a trade, it handles the cross-chain mechanics transparently.
+
+## Supported Chains
+
+| Chain | Asset Types | Execution |
+|-------|------------|-----------|
+| Solana | Spot tokens, SPL assets | Direct AMM and DEX aggregator routing |
+| Ethereum L2s | Spot tokens, DeFi positions | Bridged execution with atomic settlement |
+| Additional chains | Expanding | See [Roadmap](/roadmap/overview) for upcoming integrations |
+
+## How It Works
+
+When a trader initiates a trade on an asset that resides on a different chain from their primary wallet:
+
+1. **The router evaluates cross-chain paths.** Multiple bridging options may exist. The router selects based on speed, cost, and reliability.
+2. **A transaction bundle is constructed.** The bridge operation, the swap or order placement, and any intermediate steps are composed into a single transaction flow.
+3. **The trader reviews and signs.** The complete execution path is presented before confirmation. One signature initiates the full sequence.
+4. **Atomic settlement.** The trade settles as a single unit. If any step fails, the entire operation reverts.
+
+## Execution Guarantees
+
+**Price protection.** The execution price shown at confirmation is protected by slippage parameters. If market conditions shift beyond the trader's tolerance during settlement, the transaction reverts.
+
+**No intermediate custody.** At no point do funds rest in an Omnera-controlled address. Cross-chain movement uses trustless or minimally-trusted bridge infrastructure.
+
+**Transaction transparency.** Every step in the cross-chain execution is traceable on-chain. The trader receives transaction hashes for each component of the settlement.
+
+<Warning>
+  Cross-chain execution depends on the reliability and security of underlying bridge protocols. While Omnera selects routes for optimal safety, bridge risk cannot be fully eliminated. Cross-chain trades may take longer to settle than same-chain execution.
+</Warning>
