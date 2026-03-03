@@ -4,14 +4,6 @@
    ============================================ */
 
 @font-face {
-  font-family: 'MikroSuper';
-  src: url('/fonts/MikroSuper-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'PPSupplyMono';
   src: url('/fonts/PPSupplyMono-Regular.woff2') format('woff2');
   font-weight: 400;
@@ -25,19 +17,12 @@
    ============================================ */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'MikroSuper', sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  font-stretch: normal;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-kerning: auto;
-  font-feature-settings: normal;
-  font-variation-settings: normal;
-  text-transform: none;
-  transform: none;
-  word-spacing: normal;
 }
 
 /* ============================================

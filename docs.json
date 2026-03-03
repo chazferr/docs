@@ -10,10 +10,8 @@
   "favicon": "/favicon.svg",
   "fonts": {
     "heading": {
-      "family": "MikroSuper",
-      "source": "/fonts/MikroSuper-Regular.woff2",
-      "format": "woff2",
-      "weight": 400
+      "family": "Manrope",
+      "weight": 700
     },
     "body": {
       "family": "Manrope",
