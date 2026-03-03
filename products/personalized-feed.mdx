@@ -1,30 +1,30 @@
 ---
 title: Personalized Feed
-description: A discovery feed that learns how you trade.
+description: A discovery feed that learns how each user trades.
 ---
 
-Every trading platform in existence surfaces the same ranked list of assets to every user simultaneously. Volume leaders. Recent movers. Trending tokens. The inputs are identical across the entire user base. The result is a market where attention is homogenized and timing advantages are structurally eliminated before a position is even opened.
+Every trading platform surfaces the same ranked list of assets to every user simultaneously. Volume leaders, recent movers, trending tokens. The inputs are identical across the entire user base. The result is a market where attention is homogenized and timing advantages are structurally eliminated before a position is opened.
 
-Omnera operates on a different model. Rather than ranking assets by aggregate market activity, the feed ranks opportunities by their relevance to each individual user. Relevance is determined by a continuously updated behavioral model built from session data unique to that user.
+Omnera operates on a different model. The feed ranks opportunities by their relevance to each individual user, not by aggregate market activity. Relevance is determined by a continuously updated behavioral model built from session data unique to that user.
 
 ## Behavioral Modeling
 
 The feed captures the full decision funnel, not just execution events. Most platforms record what a user traded. Omnera records what a user considered. Time spent on an opportunity, scroll behavior, near-executions that did not complete, and instruments revisited across sessions all contribute signal to the model.
 
-This approach produces a richer representation of trader behavior than transaction history alone. A user who repeatedly views a particular market cap range without executing is expressing a preference. A user who consistently exits a feed item within two seconds is expressing a rejection. Both signals are informative. Neither appears in a transaction log.
+This approach produces a richer representation of trader behavior than transaction history alone. A user who repeatedly views a particular market cap range without executing is expressing a preference. A user who consistently exits a feed item within two seconds is expressing a rejection. Both signals are informative, but neither appears in a transaction log.
 
 ## Feed Composition
 
-The feed surfaces opportunities across spot tokens, perpetual futures, and prediction markets within a single interface. Assets across Solana and Base are surfaced together. The user does not need to navigate between applications or chains to see the full opportunity set relevant to their profile.
+The feed surfaces opportunities across spot tokens, perpetual futures, and prediction markets within a single interface. Assets on Solana and Base appear together. The user does not navigate between applications or chains to access the full opportunity set relevant to their profile.
 
 ## Model Compounding
 
-The behavioral model improves with each session. Early sessions produce a coarse profile. As session count increases, the model accumulates sufficient signal to make finer distinctions between opportunity types, risk profiles, and market conditions that match the user's observed behavior. The feed becomes materially more accurate over time.
+The behavioral model improves with each session. Early sessions produce a coarse profile. As session count increases, the model accumulates sufficient signal to make finer distinctions between opportunity types, risk profiles, and market conditions that match the user's observed behavior. The feed becomes materially more relevant over time.
 
 ## Mobile Interface
 
-The feed is designed for mobile-first interaction. The interaction pattern mirrors familiar content feed behavior: scroll, evaluate, execute. No context switching between research tools and execution interfaces. The full flow from discovery to trade occurs within a single screen.
+The feed is designed for mobile-first use. The pattern is scroll, evaluate, execute. No context switching between research tools and execution interfaces. The full flow from discovery to trade occurs within a single screen.
 
 <Card title="Pre-Trade Intelligence" icon="arrow-right" href="/products/pre-trade-intelligence">
-  Learn what the feed shows before you execute.
+  Learn what the feed shows before execution.
 </Card>
