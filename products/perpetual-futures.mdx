@@ -1,29 +1,49 @@
 ---
 title: Perpetual Futures
-description: Leveraged long and short exposure without expiry.
+description: Leveraged exposure without expiry, surfaced by behavioral relevance.
 ---
 
-A perpetual futures contract provides leveraged exposure to a crypto asset without a fixed settlement date. Unlike dated futures, which expire and require rollover, perpetual contracts remain open indefinitely. This makes them the dominant instrument for directional exposure in crypto markets, where the majority of trading volume on centralized venues occurs in perpetuals rather than spot.
+A perpetual futures contract provides leveraged exposure to a crypto asset without a fixed settlement date. Unlike dated futures, perpetual contracts remain open indefinitely. This makes them the dominant instrument for directional exposure in crypto markets, where the majority of trading volume occurs in perpetuals rather than spot.
 
-## Funding Rate Mechanism
+Most platforms present perpetual futures in isolation. A trader must navigate to a separate section, then manually assess whether the funding environment and basis spread justify the position. This separation fragments the decision process.
 
-Perpetual contracts maintain price alignment with the underlying spot market through a periodic funding rate exchanged between counterparties. When the perpetual trades at a premium to spot, long positions pay short positions. When it trades at a discount, short positions pay long positions. This mechanism anchors the perpetual price to spot without requiring physical settlement.
+## How Perpetual Futures Work
+
+**Funding rate mechanism**
+
+Perpetual contracts maintain alignment with the underlying spot price through a periodic funding rate exchanged between counterparties.
+
+- When the perpetual trades at a premium to spot, long positions pay short positions
+- When it trades at a discount, short positions pay long positions
+- This mechanism anchors the perpetual price to spot without requiring physical settlement
 
 The funding rate r at interval t is typically expressed as:
 
 r(t) = clamp((P_perp - P_spot) / P_spot, -cap, +cap)
 
-where P_perp is the mark price of the perpetual contract, P_spot is the reference spot price, and cap is the maximum funding rate permitted per interval by the venue.
+where P_perp is the mark price of the perpetual, P_spot is the reference spot price, and cap is the maximum funding rate permitted per interval by the venue.
 
-## Margin and Liquidation
+**Margin and liquidation**
 
-Positions require initial margin to open and maintenance margin to remain open. If the mark price moves against a position such that remaining margin falls below the maintenance threshold, the position is subject to liquidation. Liquidation mechanics are determined by the underlying venue and may include partial liquidation and insurance fund participation.
+- Positions require initial margin to open and maintenance margin to remain open
+- If the mark price moves against a position such that remaining margin falls below the maintenance threshold, the position is subject to liquidation
+- Liquidation mechanics are determined by the underlying venue and may include partial liquidation and insurance fund participation
 
 ## Why This Matters in the Feed
 
-Most interfaces present perpetual futures in isolation from spot markets. A trader must navigate to a separate section, then manually assess whether the current funding environment and basis spread justify the position. Omnera surfaces perpetual futures alongside spot and prediction markets in the same feed, ranked by individual relevance rather than generic volume.
+Omnera surfaces perpetual futures alongside spot and prediction markets in the same feed, ranked by individual relevance.
 
-The feed also captures behavioral signal from perpetual futures engagement specifically. A user who consistently views high-funding-rate contracts but does not execute is providing signal about risk tolerance thresholds. This refines the model in ways that a platform limited to spot data cannot replicate.
+- A user who consistently views high-funding-rate contracts but does not execute is providing signal about risk tolerance thresholds
+- The behavioral model captures leverage engagement patterns that spot-only platforms cannot detect
+- Perpetual futures activity reveals how a trader processes directional conviction and risk, which are high-value inputs for the model
+- The feed does not separate instruments by type. Relevance determines rank regardless of whether the opportunity is spot, perpetual, or prediction market
+
+## What This Means for the Trader
+
+- Perpetual futures appear in the same feed as spot and prediction markets, ranked by behavioral relevance
+- No separate interface for leveraged instruments
+- Pre-trade intelligence surfaces inline, including funding rate context and historical behavior under similar conditions
+- Cross-chain execution applies to perpetual futures on supported chains
 
 ## Risk Disclosure
 

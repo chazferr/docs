@@ -5,25 +5,39 @@ description: Event-driven contracts surfaced by behavioral relevance.
 
 A prediction market is a venue where participants take positions on the outcome of verifiable real-world events. Contract prices reflect the aggregate probability the market assigns to each outcome. A contract priced at 0.74 implies approximately 74 percent probability of the associated outcome occurring.
 
-## Price as Probability
+Prediction markets reveal a dimension of trader behavior that spot and futures markets do not. A platform limited to spot and futures data sees an incomplete version of how a trader thinks.
 
-The price of a binary prediction market contract functions as an implied probability. For a binary contract settling at 1 or 0:
+## How Prediction Markets Work
 
-P(event) ≈ contract price / $1.00
+**Price as probability**
+
+The price of a binary prediction market contract functions as an implied probability.
+
+P(event) = contract price / $1.00
 
 This relationship holds under conditions of sufficient liquidity and diverse participant composition. Academic research has consistently demonstrated that prediction market prices aggregate dispersed information with accuracy comparable to expert consensus.
 
-## Why Prediction Markets Matter for Behavioral Modeling
+**Settlement**
 
-Prediction markets reveal a dimension of trader behavior that spot and futures markets do not. Engagement with event-driven contracts signals how a trader processes uncertainty, time horizon, and conviction. These are high-value inputs for the behavioral model that do not appear in spot or futures activity.
+- Contracts settle to binary outcomes upon event resolution
+- Affirmative resolution settles at 1. Negative resolution settles at 0
+- Settlement is determined by the underlying venue based on verifiable data sources
 
-A platform limited to spot and futures data sees an incomplete version of how a trader thinks. Prediction market engagement fills a structural gap in the behavioral model that cannot be inferred from other instrument types.
+## Why This Matters for Behavioral Modeling
 
-Omnera surfaces prediction market contracts within the same feed as spot and perpetual futures, ranked by individual relevance. A user whose behavioral profile reflects interest in event-driven markets will see relevant contracts without navigating to a separate interface.
+Engagement with event-driven contracts signals how a trader processes uncertainty, time horizon, and conviction. These are high-value behavioral inputs that do not appear in spot or futures activity.
 
-## Settlement
+- A trader who monitors prediction markets but only enters when implied probability drops below a threshold is revealing a contrarian pattern
+- A trader who engages with short-duration event contracts is revealing time horizon preferences
+- A trader who avoids prediction markets entirely while actively trading spot and futures is revealing instrument-type boundaries
+- These signals fill a structural gap in the behavioral model that cannot be inferred from other instrument types
 
-Prediction market contracts settle to binary outcomes upon event resolution. Affirmative resolution settles at 1. Negative resolution settles at 0. Settlement is determined by the underlying venue based on verifiable data sources.
+## What This Means for the Trader
+
+- Prediction market contracts surface within the same feed as spot and perpetual futures, ranked by individual relevance
+- A user whose behavioral profile reflects interest in event-driven markets sees relevant contracts without navigating to a separate interface
+- Pre-trade intelligence surfaces inline, including contract mechanics and historical settlement patterns
+- No separate application or account required for prediction market participation
 
 ## Legal Disclaimer
 
