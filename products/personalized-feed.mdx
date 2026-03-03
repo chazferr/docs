@@ -1,30 +1,40 @@
 ---
 title: Personalized Feed
-description: A discovery feed that learns how each user trades.
+description: A discovery feed ranked by individual relevance, not aggregate popularity.
 ---
 
-Every trading platform surfaces the same ranked list of assets to every user simultaneously. Volume leaders, recent movers, trending tokens. The inputs are identical across the entire user base. The result is a market where attention is homogenized and timing advantages are structurally eliminated before a position is opened.
+Every existing trading platform ranks assets by the same aggregate metrics: volume, price change, market cap. The ranked list is identical for every user. A professional trader managing six figures and a first-time buyer opening a wallet see the same screen. The platform treats them as the same participant because it has no mechanism to distinguish between them.
 
-Omnera operates on a different model. The feed ranks opportunities by their relevance to each individual user, not by aggregate market activity. Relevance is determined by a continuously updated behavioral model built from session data unique to that user.
+This is not a data problem. The data exists: scroll behavior, dwell time, instrument preference, risk tolerance revealed through position sizing, hesitation patterns before execution. The problem is that no platform captures it. They record transactions. They do not record decisions.
 
-## Behavioral Modeling
+## How the Feed Ranks
 
-The feed captures the full decision funnel, not just execution events. Most platforms record what a user traded. Omnera records what a user considered. Time spent on an opportunity, scroll behavior, near-executions that did not complete, and instruments revisited across sessions all contribute signal to the model.
+The feed does not rank by aggregate activity. It ranks by individual relevance, computed from a behavioral model unique to each user.
 
-This approach produces a richer representation of trader behavior than transaction history alone. A user who repeatedly views a particular market cap range without executing is expressing a preference. A user who consistently exits a feed item within two seconds is expressing a rejection. Both signals are informative, but neither appears in a transaction log.
+The model ingests session-level data that extends far beyond trade execution. Inputs include time spent on each opportunity, scroll velocity through different asset classes, how often an opportunity is revisited before action is taken, near-executions that were cancelled, and the instrument types a user gravitates toward across sessions.
+
+These signals produce a relevance score for each opportunity in the feed. The score determines rank. Two users opening the feed at the same moment see different content, ordered differently, because their behavioral histories are different.
+
+## What the Model Learns
+
+A user who consistently views sub-$500K market cap tokens but only executes on those with locked liquidity is expressing a filter. A user who dwells on perpetual futures contracts but exits before execution is expressing hesitation around leverage. A user who revisits the same prediction market three sessions in a row is expressing conviction building toward a threshold.
+
+None of these signals appear in a transaction log. All of them appear in the behavioral model. The model does not need the user to configure preferences. It infers them from observed behavior.
+
+## Compounding
+
+Early sessions produce a coarse model. Signal density is low and relevance scoring is approximate. As session count increases, the model resolves finer distinctions between opportunity types, risk profiles, and market conditions that match the user's pattern.
+
+This is not linear improvement. Behavioral data compounds. Each session adds signal that makes subsequent sessions more precise. A trader on session fifty operates on a qualitatively different information surface than a trader on session three.
 
 ## Feed Composition
 
-The feed surfaces opportunities across spot tokens, perpetual futures, and prediction markets within a single interface. Assets on Solana and Base appear together. The user does not navigate between applications or chains to access the full opportunity set relevant to their profile.
+The feed surfaces spot tokens, perpetual futures, and prediction markets within a single interface. Assets on Solana and Base appear together. There is no switching between applications or chains to see the full opportunity set relevant to a given profile.
 
-## Model Compounding
+## Mobile
 
-The behavioral model improves with each session. Early sessions produce a coarse profile. As session count increases, the model accumulates sufficient signal to make finer distinctions between opportunity types, risk profiles, and market conditions that match the user's observed behavior. The feed becomes materially more relevant over time.
-
-## Mobile Interface
-
-The feed is designed for mobile-first use. The pattern is scroll, evaluate, execute. No context switching between research tools and execution interfaces. The full flow from discovery to trade occurs within a single screen.
+The feed is designed for mobile-first use. The interaction pattern is scroll, evaluate, execute. The full flow from discovery to trade occurs within a single screen with no context switching.
 
 <Card title="Pre-Trade Intelligence" icon="arrow-right" href="/products/pre-trade-intelligence">
-  Learn what the feed shows before execution.
+  What the feed shows before execution.
 </Card>

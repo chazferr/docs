@@ -1,28 +1,34 @@
 ---
 title: Pre-Trade Intelligence
-description: Context at the moment of decision.
+description: Structured context at the point of decision.
 ---
 
-Execution without context is speculation on incomplete information. The standard trading interface presents price, volume, and order book depth at the moment a user decides whether to enter a position. These inputs describe current market state. They do not describe whether current conditions are anomalous, whether similar conditions have historically preceded reversals, or whether the asset exhibits patterns relevant to the user's observed trading style.
+The standard sequence for evaluating an on-chain opportunity involves opening multiple tools, cross-referencing data manually, and synthesizing information from sources that were not designed to work together. By the time the evaluation is complete, the opportunity has either moved or the trader has entered on incomplete information. The bottleneck is not analysis skill. It is the time cost of assembling context from fragmented sources.
 
-Omnera surfaces this context before execution occurs.
+Omnera eliminates this assembly step. When a user engages with an opportunity in the feed, structured context surfaces automatically at the point of decision.
 
-## Signal Layer
+## What Surfaces
 
-At the point of decision, Omnera presents on-chain behavioral data and historical price pattern analysis for the opportunity in view. This includes wallet activity patterns among significant holders, volatility distribution across comparable conditions, and anomalous signals that diverge from the asset's baseline behavior.
+The signal layer presents three categories of information at the moment a user is evaluating an opportunity.
 
-The signal layer does not generate a recommendation. It presents structured information that a trader would otherwise need to source manually from multiple external tools before the opportunity window closes.
+On-chain data includes wallet activity among the asset's largest holders, transaction patterns that diverge from the asset's baseline, and contract-level risk indicators including mint authority status, liquidity lock state, and holder concentration metrics.
 
-## Informational Scope
+Historical pattern data describes how the asset has behaved under comparable market conditions in prior periods. This includes volatility distribution, drawdown frequency, and recovery patterns across similar market regimes.
 
-Pre-trade intelligence organizes signal into three categories. On-chain data covers observable blockchain activity associated with the asset. Historical pattern data describes how the asset has behaved under comparable market conditions. Behavioral context compares the current opportunity against what the user has previously engaged with, based on their feed profile.
+Behavioral context compares the current opportunity against the user's feed history. If the user has previously engaged with similar opportunities, the system surfaces how those prior opportunities performed after the user's point of engagement.
 
-No signal category constitutes a prediction of future price movement. Markets are non-stationary. Historical patterns are descriptive, not prescriptive.
+## What Does Not Surface
+
+The signal layer does not generate trade recommendations. It does not predict future price movement. It does not assign buy or sell signals. Markets are non-stationary. Historical patterns are descriptive, not prescriptive.
+
+## Timing
+
+Context assembly occurs at the point of decision, not before and not after. The intelligence is not a research dashboard consulted separately. It surfaces inline, within the feed, at the moment the user's attention is on a specific opportunity. Every second spent switching between external tools is a second the market is moving.
 
 ## Disclaimer
 
 Pre-trade intelligence is informational only. It does not constitute financial advice. Past market behavior does not guarantee future results. All trading decisions are made solely by the user.
 
 <Card title="Cross-Chain Execution" icon="arrow-right" href="/products/cross-chain-execution">
-  Learn how Omnera executes across chains.
+  How Omnera executes across chains.
 </Card>

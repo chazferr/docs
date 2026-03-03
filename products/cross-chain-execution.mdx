@@ -3,19 +3,19 @@ title: Cross-Chain Execution
 description: One interface. Every chain. No bridges.
 ---
 
-Cross-chain trading has historically required users to manage sequential operations across multiple interfaces. Bridging introduces custody risk, wrapping introduces basis risk, and each additional transaction adds failure surface. The operational overhead eliminates most cross-chain opportunities before they can be acted upon.
+A trader holding SOL who identifies an opportunity on Base faces a sequence of operations: find a bridge, wait for confirmation, receive wrapped tokens, swap into native assets, then execute. Each step introduces latency, cost, and failure risk. By the time the sequence completes, the opportunity has repriced or disappeared. This friction is structural, and it filters out every cross-chain opportunity that requires speed.
 
-Omnera abstracts this entirely. The user expresses intent. Omnera resolves the execution path. The user receives native assets on the destination chain without managing any intermediate steps.
+Omnera removes the sequence entirely. The user expresses intent. The system resolves the execution path. Native assets arrive on the destination chain.
 
 ## Execution Model
 
-Omnera uses intent-based routing. When a user initiates a trade, the system determines the optimal path across supported chains. Execution is atomic: the trade either completes in full or does not execute. There is no partial state and no stuck funds.
+Omnera uses intent-based routing. When a trade is initiated, the system evaluates available paths across supported chains and selects the optimal route. Execution is atomic: the trade completes in full or does not execute at all. There is no partial state, no wrapped tokens, and no funds held in custody during transit.
 
-Omnera does not act as a bridge. Assets are not held in custody during transit. The atomicity guarantee eliminates the class of failure modes associated with traditional cross-chain bridging.
+This is not a bridge. Bridges custody assets during transfer, creating a class of risk that has historically resulted in billions of dollars in losses across the industry. Atomic execution eliminates this custody window entirely.
 
 ## Supported Chains
 
-Omnera currently supports Solana and Base. Additional chains are in active development. As each chain is integrated, opportunities on that chain surface in the feed automatically based on user relevance.
+Solana and Base are live. Additional chains are in active development. As each chain is integrated, opportunities on that chain surface in the feed automatically. Each new chain also expands the behavioral model, because cross-chain activity reveals patterns that single-chain data cannot.
 
 <Card title="Fee Structure" icon="arrow-right" href="/products/fees">
   View trading and execution fees.
