@@ -3,46 +3,15 @@ title: Cross-Chain Execution
 description: One interface. Every supported chain. No bridges.
 ---
 
-A trader holding SOL who identifies an opportunity on Base faces a sequence: find a bridge, wait for confirmation, receive wrapped tokens, swap into native assets, then execute. Each step introduces latency, cost, and failure risk. By the time the sequence completes, the opportunity has repriced or disappeared.
+A trader holding SOL who identifies an opportunity on Base faces a sequence. Find a bridge. Wait for confirmation. Receive wrapped tokens. Swap into native assets. Execute. Each step introduces latency, cost, and failure risk. By the time the sequence completes, the opportunity has repriced or disappeared. This friction is structural. It filters out every cross-chain opportunity that requires speed.
 
-This friction is structural. It filters out every cross-chain opportunity that requires speed.
+Omnera removes the sequence entirely. You express intent. The system evaluates available paths across supported chains and selects the optimal route. Execution is atomic. The trade completes in full or does not execute at all. There is no partial state, no wrapped tokens, and no funds held in custody during transit. Native assets arrive on the destination chain.
 
-## How It Works
+This is not a bridge. Bridges custody assets during transfer, creating a window where funds are held by a third-party contract. That custody window has historically resulted in billions of dollars in losses across the industry. Atomic execution eliminates the custody window entirely. The trade settles or it reverts. There is no intermediate state where funds exist outside your control.
 
-Omnera uses intent-based routing. The user expresses what they want to execute. The system resolves the optimal path across supported chains.
+Solana and Base are live. Additional chains are in active development. As each chain is integrated, opportunities on that chain surface in the feed automatically. Each new chain also expands the behavioral model, because cross-chain activity reveals patterns that single-chain data cannot capture.
 
-- Execution is atomic. The trade completes in full or does not execute at all
-- There is no partial state. No funds are held in custody during transit
-- No wrapped tokens are created. Native assets arrive on the destination chain
-- The user does not select a route, a bridge, or an intermediary. The system handles path resolution
-
-## Why This Is Not a Bridge
-
-Bridges custody assets during transfer, creating a window where funds are held by a third-party contract. This custody window has historically resulted in billions of dollars in losses across the industry through exploits and failures.
-
-Atomic execution eliminates the custody window entirely. The trade settles or it reverts. There is no intermediate state where funds exist outside the user's control.
-
-## Failure Handling
-
-- If a route cannot be resolved, the trade does not execute. No partial fills. No stuck transactions
-- Failed executions do not debit the user. Fees are charged only on successful settlement
-- The user is notified if a trade cannot be completed and retains full control of their assets
-
-## Supported Chains
-
-- Solana and Base are live
-- Additional chains are in active development
-- As each chain is integrated, opportunities on that chain surface in the feed automatically
-- Each new chain expands the behavioral model. Cross-chain activity reveals patterns that single-chain data cannot
-
-## What This Means for the Trader
-
-- One interface for execution across all supported chains
-- No bridge research. No route selection. No wrapped token management
-- Native assets on the destination chain after every successful trade
-- Execution cost is up to 1% per trade. No subscription. No platform fee
-
-Execution should be invisible. The trader's job is to decide. Everything after the decision is infrastructure.
+Execution should be invisible. Your job is to decide. Everything after the decision is infrastructure.
 
 <Card title="Fee Structure" icon="arrow-right" href="/products/fees">
   View trading and execution fees.

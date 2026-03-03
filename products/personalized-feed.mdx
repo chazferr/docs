@@ -3,56 +3,15 @@ title: Personalized Feed
 description: Discovery ranked by individual relevance, not aggregate popularity.
 ---
 
-Every existing trading platform ranks assets by the same aggregate metrics: volume, price change, market cap. The result is an identical ranked list for every user. A professional trader managing six figures and a first-time buyer opening a wallet see the same screen. The platform has no mechanism to distinguish them.
+Every trading platform ranks assets the same way. Volume. Price change. Market cap. The list is identical for every user. A professional trader and a first-time buyer see the same screen. The platform treats them as the same participant because it has no mechanism to tell them apart.
 
-This is not a data problem. The data exists. No platform captures it. They record transactions. They do not record decisions.
+The data to distinguish them exists. No platform captures it. Transaction logs record what you did. They do not record what you considered. What held your attention three seconds longer than usual. What you almost executed and cancelled. What you revisited across three separate sessions before acting. These signals are invisible to any system that only records outcomes.
 
-## What Omnera Observes
+Omnera captures the decision layer and uses it to rank the feed. Every opportunity receives a relevance score derived from a behavioral model that updates every session. The model operates across spot, perpetual futures, and prediction markets on Solana and Base. Two traders opening the feed at the same moment see different content in a different order. Behavioral history determines rank, not aggregate volume.
 
-The behavioral model ingests session-level data that no transaction log contains.
+The model compounds. Early sessions produce a coarse signal. Later sessions resolve finer distinctions between opportunity types, risk profiles, and market conditions that match your actual pattern. A trader on session fifty operates on a qualitatively different information surface than a trader on session three. Each session sharpens every session that follows.
 
-- Scroll depth and velocity through different asset classes
-- Dwell time on specific opportunities before any action is taken
-- Near-executions that were initiated but not completed
-- How often an opportunity is revisited across sessions before action occurs
-- Instrument types the user gravitates toward: spot, perpetual futures, prediction markets
-- The relationship between viewing behavior and execution decisions over time
-
-A user who consistently views sub-$500K market cap tokens but only executes on those with locked liquidity is expressing a filter. A user who dwells on perpetual futures but exits before execution is expressing hesitation around leverage. A user who revisits the same prediction market three sessions in a row is expressing conviction building toward a threshold.
-
-None of these signals appear in a transaction log. All of them appear in the behavioral model.
-
-## How Relevance Is Ranked
-
-Each opportunity in the feed receives a per-user relevance score derived from the behavioral model.
-
-- The score determines rank. Two users opening the feed at the same moment see different content in a different order
-- The model does not rely on stated preferences or manual configuration. It infers preferences from observed behavior
-- Relevance scoring operates across all supported instrument types: spot tokens, perpetual futures, and prediction markets on Solana and Base
-- The feed is a single interface. There is no switching between applications or chains to see the full opportunity set
-
-## What the Feed Enables
-
-- Differentiated discovery. The feed reflects individual behavior, not what is trending on aggregate
-- All supported instruments in a single view across Solana and Base
-- The interaction pattern is scroll, evaluate, execute. Discovery to trade occurs within a single screen
-- Mobile-native design. The same behavioral model operates on mobile with the same ranking logic
-
-## How Signal Compounds
-
-Early sessions produce a coarse model. Signal density is low and relevance scoring is approximate. As session count increases, the model resolves finer distinctions between opportunity types, risk profiles, and market conditions.
-
-- Behavioral data compounds. Each session adds signal that makes subsequent sessions more precise
-- A trader on session fifty operates on a qualitatively different information surface than a trader on session three
-- The model does not plateau at a fixed level of accuracy. New behavioral data continues refining relevance as market conditions and user behavior evolve
-
-## Design Constraints
-
-- The model begins learning from session one with zero configuration
-- Behavioral inputs are captured regardless of whether a trade executes
-- The feed covers spot, perpetual futures, and prediction markets in a single interface
-- Wallet connection is non-custodial. Omnera never holds user funds
-- No trade recommendations are generated. The model ranks. The user decides
+Every session without a profile active defaults to the same consensus view available to every other participant. The feed is not a feature. It is a compounding advantage that begins the moment a profile exists.
 
 <Card title="Pre-Trade Intelligence" icon="arrow-right" href="/products/pre-trade-intelligence">
   What the feed shows before execution.
