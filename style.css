@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'PPSupplyMono';
+  src: url('/fonts/PPSupplyMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Code blocks and inline code use PPSupplyMono */
+code,
+pre code,
+kbd,
+samp {
+  font-family: 'PPSupplyMono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+pre {
+  font-family: 'PPSupplyMono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
