@@ -76,7 +76,7 @@
       "anchors": [
         {
           "anchor": "Join Waitlist",
-          "href": "https://omnera.trade",
+          "href": "https://omnera.io/contact",
           "icon": "rocket"
         },
         {
@@ -101,8 +101,8 @@
     "primary": {
       "type": "button",
       "label": "Get Early Access",
-      "href": "https://omnera.trade"
-    }
+      "href": "https://omnera.io/contact"
+}
   },
   "contextual": {
     "options": [
