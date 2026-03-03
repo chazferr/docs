@@ -1,0 +1,34 @@
+---
+title: Perpetual Futures
+description: Leveraged long and short exposure without expiry.
+---
+
+# Perpetual Futures
+
+A perpetual futures contract allows a trader to hold a leveraged long or short position on a crypto asset without an expiry date. Unlike traditional futures contracts, which settle on a fixed date, perpetual contracts remain open indefinitely subject to margin requirements and funding rate payments.
+
+## Funding Rate Mechanism
+
+Perpetual contracts maintain price alignment with the underlying spot market through a periodic funding rate exchanged between long and short counterparties. When the perpetual contract trades at a premium to spot, long positions pay short positions at the funding interval. When the perpetual trades at a discount to spot, short positions pay long positions. This mechanism anchors the perpetual price to spot over time without requiring physical settlement.
+
+The funding rate r at interval t is typically expressed as:
+
+r(t) = clamp((P_perp - P_spot) / P_spot, -cap, +cap)
+
+where P_perp is the mark price of the perpetual contract, P_spot is the reference spot price, and cap is the maximum funding rate permitted per interval by the venue.
+
+## Margin and Liquidation
+
+Positions require initial margin to open and maintenance margin to remain open. If the mark price moves against an open position such that the remaining margin falls below the maintenance threshold, the position is subject to liquidation. Liquidation mechanics, including partial liquidation thresholds and insurance fund participation, are determined by the underlying venue.
+
+## Access Through the Feed
+
+Perpetual futures opportunities are surfaced in the feed alongside spot and prediction market positions. Users whose behavioral profiles reflect engagement with leveraged instruments will see relevant perpetual contracts surfaced according to their profile.
+
+## Risk Disclosure
+
+Perpetual futures involve leverage and carry significant risk of loss. A position can be liquidated if margin falls below the required maintenance threshold. Only trade with capital you can afford to lose. Omnera does not provide trading advice. All execution decisions are made by the user.
+
+<Card title="Fee Structure" icon="arrow-right" href="/products/fees">
+  View trading and execution fees.
+</Card>

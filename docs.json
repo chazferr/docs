@@ -21,21 +21,31 @@
             ]
           },
           {
-            "group": "Products",
+            "group": "How It Works",
             "pages": [
               "products/personalized-feed",
-              "products/pre-trade-intelligence",
-              "products/cross-chain-execution"
+              "products/pre-trade-intelligence"
+            ]
+          },
+          {
+            "group": "Execution",
+            "pages": [
+              "products/cross-chain-execution",
+              "products/perpetual-futures",
+              "products/prediction-markets"
+            ]
+          },
+          {
+            "group": "Fees",
+            "pages": [
+              "products/fees"
             ]
           },
           {
             "group": "Roadmap",
             "pages": [
               "roadmap/overview",
-              "roadmap/mobile-app",
-              "roadmap/prediction-markets",
-              "roadmap/omnera-warp",
-              "roadmap/warp-sdk"
+              "roadmap/mobile-app"
             ]
           }
         ]

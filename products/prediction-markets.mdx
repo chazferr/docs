@@ -1,0 +1,34 @@
+---
+title: Prediction Markets
+description: Information markets surfaced in the feed.
+---
+
+# Prediction Markets
+
+A prediction market is a venue where participants take positions on the outcome of verifiable real-world events. Contract prices reflect the aggregate probability the market assigns to each outcome at a given point in time. A contract priced at 0.74 implies the market assigns approximately 74 percent probability to the associated outcome occurring.
+
+## Price as Probability
+
+The price of a binary prediction market contract can be interpreted as an implied probability under the assumption of risk-neutral pricing. For a binary contract with outcomes 1 and 0:
+
+P(event) ≈ contract price / $1.00
+
+This relationship holds when markets are sufficiently liquid and participant composition is diverse. Prediction markets have been studied extensively as mechanisms for aggregating dispersed information. Under appropriate conditions, market prices have demonstrated forecasting accuracy comparable to expert consensus.
+
+## Integration with the Feed
+
+Prediction market opportunities are surfaced within the same feed as spot and perpetual futures positions. A user whose behavioral profile reflects engagement with event-driven markets will see relevant contracts surfaced alongside other opportunities matched to their profile.
+
+Positions are taken through the same execution interface used across all instrument types. No separate application or interface is required.
+
+## Settlement
+
+Prediction market contracts settle to binary outcomes upon event resolution. A contract resolving affirmatively settles at 1. A contract resolving negatively settles at 0. Settlement is determined by the underlying venue based on verifiable real-world data sources.
+
+## Legal Disclaimer
+
+Prediction market features are available where legally permitted. Users are responsible for ensuring compliance with applicable local laws and regulations before participating. This is not financial advice.
+
+<Card title="Fee Structure" icon="arrow-right" href="/products/fees">
+  View trading and execution fees.
+</Card>
