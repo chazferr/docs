@@ -7,19 +7,25 @@ description: One interface. Every chain. No bridges.
 
 One interface. Every chain. No bridges.
 
-Cross-chain trading has historically required users to manage multiple steps across multiple interfaces. Find a bridge. Wait for confirmation. Receive a wrapped asset. Swap again. Pay fees at each step. The process is slow, error-prone, and pulls attention away from the trade itself.
+Cross-chain trading has historically required users to manage sequential operations across multiple interfaces. Bridging assets introduces custody risk, wrapping introduces basis risk, and each additional transaction introduces failure surface. The operational overhead of a cross-chain trade has, until recently, imposed a practical barrier that eliminated most cross-chain opportunities before they could be acted upon.
 
-Omnera removes this entirely. When the feed surfaces an opportunity on any supported chain, the user expresses intent. Omnera resolves the optimal execution path automatically. There is no bridging step. There are no wrapped tokens. The user receives native assets on the destination chain.
+Omnera abstracts this entirely. The user expresses intent. Omnera resolves the execution path. The user receives native assets on the destination chain without managing any intermediate steps.
 
-This is not a bridge. Omnera does not custody assets during transit. Execution is atomic. Either the full trade completes or nothing happens. There is no partial state.
+## Execution Model
+
+Omnera uses intent-based routing. When a user initiates a trade, the system determines the optimal path to fulfill that intent across supported chains. Execution is atomic. The trade either completes in full or does not execute. There is no partial state and no stuck funds.
+
+Omnera does not act as a bridge. Assets are not held in custody during transit. The atomicity guarantee eliminates the class of failure modes associated with traditional cross-chain bridging.
 
 ## Supported Chains
 
-Omnera currently supports Solana and Base. Additional chains are in development and will be added to the feed as they come online.
+Omnera currently supports Solana and Base. Additional chains are in active development. As new chains are integrated, opportunities on those chains will surface in the feed automatically.
 
 ## Perpetual Futures
 
-Omnera surfaces perpetual futures contracts across supported venues. A perpetual futures contract allows a user to take a leveraged long or short position on a crypto asset without an expiry date. The position can be held indefinitely, subject to funding rates and margin requirements.
+Omnera surfaces perpetual futures contracts across supported venues. A perpetual futures contract allows a trader to hold a leveraged long or short position on a crypto asset without an expiry date. The position remains open indefinitely, subject to funding rates paid between long and short counterparties and margin requirements set by the venue.
+
+Funding rates are determined by the difference between the perpetual contract price and the underlying spot price. When the perpetual trades at a premium to spot, long positions pay short positions. When the perpetual trades at a discount, short positions pay long positions. This mechanism anchors the perpetual price to spot over time.
 
 Perpetual futures involve leverage and carry significant risk of loss. A position can be liquidated if margin falls below the required maintenance threshold. Only trade with capital you can afford to lose. Omnera does not provide trading advice. All execution decisions are made by the user.
 

@@ -1,86 +1,30 @@
 ---
-title: "Expanded Chain Support"
-description: "Every new chain makes the feed smarter"
+title: Expanded Chain Support
+description: Additional chain integrations in development.
 ---
 
-## Beyond Solana + Base
+# Expanded Chain Support
 
-Omnera currently executes across Solana and Base. The next phase brings Ethereum, Arbitrum, and additional L2s into the feed.
+Omnera currently supports cross-chain execution across Solana and Base. Additional chains are in active development.
 
-<Info>
-  **Target**: Q2 to Q3 2026
-</Info>
+## Rationale
 
-## Why More Chains Matter
+Each chain added to the platform increases the total opportunity set available to the feed. More importantly, cross-chain behavioral data compounds the feed model. A user who trades spot on Solana and perpetual futures on Base generates a richer behavioral profile than a user confined to a single chain. Additional chains increase model resolution.
 
-Every chain added to Omnera doesn't just add more tokens. It compounds the feed.
+## Planned Integrations
 
-More chains = more instruments = more behavioral data = a sharper feed. Each new chain teaches the feed something new about how you trade.
+Ethereum and Arbitrum are planned for integration. Additional L2 chains will follow. Specific timelines have not been announced. As each chain is integrated, opportunities on that chain will surface in the feed automatically based on user relevance.
 
-<CardGroup cols={2}>
-  <Card title="More Opportunities" icon="compass">
-    Opportunities across every major chain, surfaced in one feed.
-  </Card>
-  <Card title="Same Experience" icon="hand-pointer">
-    One tap. Same sub-500ms execution. Same MEV protection. Chain is invisible.
-  </Card>
-  <Card title="Compound Intelligence" icon="brain">
-    Each chain adds signal to your behavioral profile. The feed gets smarter.
-  </Card>
-  <Card title="No Bridges" icon="bridge-water">
-    Direct execution on every chain. No traditional bridging. No wrapped tokens.
-  </Card>
-</CardGroup>
+## Intent-Based Routing
 
-## Planned Chain Support
+Cross-chain execution uses intent-based routing. The user specifies the desired outcome. The system determines the optimal execution path across available chains. A solver network competes to fill each intent, producing price competition that benefits the user.
 
-<Warning>
-  Chains below are planned, not currently live. Solana and Base are live today.
-</Warning>
-
-| Chain | Status |
-|-------|--------|
-| Solana | **Live** |
-| Base | **Live** |
-| Ethereum | Planned |
-| Arbitrum | Planned |
-| More L2s | Post-launch |
-
-## Intent-Based Execution
-
-As Omnera expands to more chains, execution becomes fully intent-based. You express what you want. The system figures out how.
-
-<Steps>
-  <Step title="Feed Surfaces Opportunity">
-    An opportunity on any supported chain appears in your feed.
-  </Step>
-  <Step title="One Tap">
-    Tap to execute. Omnera determines the optimal cross-chain route.
-  </Step>
-  <Step title="Solvers Compete">
-    A decentralized solver network competes to find the best execution path. Competition = better rates.
-  </Step>
-  <Step title="Atomic Execution">
-    The trade executes atomically. Either it all happens, or none of it does.
-  </Step>
-</Steps>
-
-## Infrastructure
-
-Cross-chain execution runs on the same bare-metal infrastructure as single-chain trades.
-
-| Detail | Spec |
-|--------|------|
-| Physical nodes | Tokyo, Ashburn, Frankfurt |
-| Execution latency | Sub-500ms |
-| Architecture | No cloud. Physical infrastructure only |
+Execution remains atomic regardless of chain count. The trade either completes in full or does not execute. There is no partial state.
 
 ## For Developers
 
-Want to build on Omnera's cross-chain execution? The [Warp SDK](/roadmap/warp-sdk) will let you embed this capability in your own applications.
+A developer SDK for cross-chain execution is planned. Details are available on the [SDK page](/roadmap/warp-sdk).
 
-## Get Notified
-
-<Card title="Join the Waitlist" icon="bell" href="https://omnera.trade">
-  Be first to know when new chains go live.
+<Card title="Join the Waitlist" icon="arrow-right" href="https://omnera.trade">
+  Request early access.
 </Card>

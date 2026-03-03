@@ -1,68 +1,24 @@
 ---
-title: "Prediction Markets"
-description: "Information markets for real-world events, surfaced in your feed"
+title: Prediction Markets
+description: Information markets surfaced in the feed.
 ---
 
-## What Are Prediction Markets
+# Prediction Markets
 
-Prediction markets are information markets that let users take positions on the outcome of real-world events. They reflect what participants collectively believe is likely to happen.
+A prediction market is a venue where participants take positions on the outcome of verifiable real-world events. Prices in a prediction market reflect the aggregate probability the market assigns to each outcome at any given time. A contract priced at 0.74 implies the market believes there is approximately a 74 percent probability the associated outcome will occur.
 
-Examples of prediction market questions:
-- Will a specific token reach a certain market cap by a given date?
-- Which blockchain narrative will dominate this quarter?
-- Will a protocol launch on schedule?
+Prediction markets have been studied extensively in academic literature as mechanisms for aggregating dispersed information. Under conditions of sufficient liquidity and participant diversity, market prices have demonstrated forecasting accuracy that compares favorably to expert consensus and polling methodologies.
 
-Prediction markets are not investments. They are markets for expressing a view on an outcome.
+## Integration with the Feed
 
-## How Omnera Surfaces Them
+Omnera surfaces prediction market opportunities within the same feed as spot and perpetual futures positions. A user whose behavioral profile reflects interest in event-driven markets will see relevant prediction market contracts surfaced alongside other opportunities matched to their profile.
 
-Prediction markets appear in your feed alongside spot and perps opportunities. The feed matches them to your behavioral profile, just like any other instrument.
+Positions are taken through the same one-tap execution interface used across all instrument types. There is no separate application or interface required.
 
-<Steps>
-  <Step title="Feed Surfaces Markets">
-    Prediction markets that match your interests and behavior appear in your feed automatically.
-  </Step>
-  <Step title="Context Is Provided">
-    Each market includes relevant context. What the question is. Current positioning. Time remaining.
-  </Step>
-  <Step title="You Take a Position">
-    If you choose to participate, you can take a position in one tap.
-  </Step>
-  <Step title="Resolution">
-    Markets resolve based on verifiable real-world outcomes.
-  </Step>
-</Steps>
+## Settlement
 
-## In Development
+Prediction market contracts settle to binary outcomes upon event resolution. A contract that resolves affirmatively settles at 1. A contract that resolves negatively settles at 0. Settlement is determined by the underlying venue based on verifiable real-world data sources.
 
-Prediction market capabilities are currently being built. Expanded features will include:
+## Disclaimer
 
-<CardGroup cols={2}>
-  <Card title="Event Coverage" icon="calendar">
-    Markets covering crypto events, protocol milestones, and broader trends.
-  </Card>
-  <Card title="Feed Integration" icon="rss">
-    Prediction markets surfaced alongside spot and perps, matched to your profile.
-  </Card>
-  <Card title="Real-Time Context" icon="clock">
-    Live data on current market positioning and time remaining.
-  </Card>
-  <Card title="Transparent Resolution" icon="circle-check">
-    Clear resolution criteria for every market.
-  </Card>
-</CardGroup>
-
-<Warning>
-  Prediction market features are available where legally permitted. Users are responsible for ensuring compliance with applicable local laws and regulations before participating. This is not financial advice.
-</Warning>
-
-## Stay Updated
-
-<CardGroup cols={2}>
-  <Card title="Discord" icon="discord" href="https://discord.gg/rAN7VDxf">
-    Get updates on prediction market development.
-  </Card>
-  <Card title="Twitter" icon="x-twitter" href="https://x.com/OmneraTrade">
-    Follow for announcements.
-  </Card>
-</CardGroup>
+Prediction market features are available where legally permitted. Users are responsible for ensuring compliance with applicable local laws and regulations before participating. This is not financial advice.

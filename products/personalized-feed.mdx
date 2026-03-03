@@ -1,91 +1,34 @@
 ---
-title: "Personalized Feed"
-description: "A discovery feed that learns how you trade."
+title: Personalized Feed
+description: A discovery feed that learns how you trade.
 ---
 
-## The Problem
+# Personalized Feed
 
-Every trading platform shows you the same thing. Trending tokens. Volume leaders. Generic watchlists.
+A discovery feed that learns how you trade.
 
-You see the same inputs as millions of other traders. That's noise.
+Every trading platform in existence surfaces the same ranked list of assets to every user simultaneously. Volume leaders. Recent movers. Trending tokens. The inputs are identical across the entire user base. The result is a market where attention is homogenized and timing advantages are structurally eliminated before a position is even opened.
 
-## The Feed
+Omnera operates on a different model. Rather than ranking assets by aggregate market activity, the feed ranks opportunities by their relevance to each individual user. Relevance is determined by a continuously updated behavioral model built from session data unique to that user.
 
-Omnera is a personalized discovery feed for crypto traders. One feed. Spot, perps, meme coins, prediction markets. Solana and Base. One tap.
+## Behavioral Modeling
 
-<CardGroup cols={2}>
-  <Card title="Behavioral Learning" icon="fingerprint">
-    Every session builds a profile unique to you. What you watch, scroll past, and almost trade.
-  </Card>
-  <Card title="Cross-Instrument" icon="layer-group">
-    Spot, perps, prediction markets. All in one feed. Not split across different apps.
-  </Card>
-  <Card title="Cross-Chain" icon="link">
-    Opportunities across Solana and Base, surfaced together. More chains coming.
-  </Card>
-  <Card title="One Tap" icon="hand-pointer">
-    See it. Tap it. Trade it. Pre-trade intelligence and execution in a single flow.
-  </Card>
-</CardGroup>
+The feed captures the full decision funnel, not just execution events. Most platforms record what a user traded. Omnera records what a user considered. Time spent on an opportunity, scroll behavior, near-executions that did not complete, and instruments revisited across sessions all contribute signal to the model.
 
-## How It Learns
+This approach produces a richer representation of trader behavior than transaction history alone. A user who repeatedly views a particular market cap range without executing is expressing a preference. A user who consistently exits a feed item within two seconds is expressing a rejection. Both signals are informative. Neither appears in a transaction log.
 
-<Steps>
-  <Step title="It Watches Everything">
-    Not just your trades. The feed tracks what you look at, how long you look, what you skip, and what you almost execute. This is behavioral data that most platforms never capture.
-  </Step>
-  <Step title="It Builds Your Profile">
-    Over time, the feed develops a model of your trading behavior. What market caps attract you. Which risk profiles match your style. What instruments you gravitate toward.
-  </Step>
-  <Step title="It Surfaces Relevant Opportunities">
-    The feed stops showing you generic trending lists. It starts showing you opportunities that match your actual behavior. Not what's popular. What's relevant to you.
-  </Step>
-  <Step title="It Compounds">
-    Each session makes the next one smarter. Each new instrument and chain adds to the profile. The longer you use it, the more refined it gets.
-  </Step>
-</Steps>
+## Feed Composition
 
-## What It Tracks
+The feed surfaces opportunities across spot tokens, perpetual futures, and prediction markets within a single interface. Assets across Solana and Base are surfaced together. The user does not need to navigate between applications or chains to see the full opportunity set relevant to their profile.
 
-Most platforms only track what you bought and sold. Omnera captures the full decision funnel.
+## Model Compounding
 
-| Signal | What It Tells Us |
-|--------|------------------|
-| What you watched closely | Active interest |
-| What you scrolled past | Not relevant to your style |
-| What you almost traded | Hesitation patterns |
-| What you executed | Confirmed preferences |
-| Time spent on an opportunity | Depth of consideration |
-| Chains and instruments used | Infrastructure preferences |
+The behavioral model improves with each session. Early sessions produce a coarse profile. As session count increases, the model accumulates sufficient signal to make finer distinctions between opportunity types, risk profiles, and market conditions that match the user's observed behavior. The feed becomes materially more accurate over time.
 
-This behavioral layer is what makes the feed personal. No one else has your profile.
+## Mobile Interface
 
-## Feed vs. Search
+The feed is designed for mobile-first interaction. The interaction pattern mirrors familiar content feed behavior: scroll, evaluate, execute. No context switching between research tools and execution interfaces. The full flow from discovery to trade occurs within a single screen.
 
-Most platforms require you to search for what you want. You need to already know what you're looking for.
-
-The feed works differently. Opportunities come to you, matched to your behavior.
-
-| | Search-Based Platforms | Omnera Feed |
-|---|------------------------|-------------|
-| Discovery | You search | Feed surfaces |
-| Personalization | None | Learns every session |
-| Instruments | One type per app | Spot, perps, prediction markets |
-| Chains | One chain per app | Solana + Base, expanding |
-| Context | You research separately | Pre-trade intelligence included |
-
-## Mobile-First
-
-The feed is built for your phone. Scroll, tap, trade. The same interaction pattern you already use every day.
-
-<Info>
-  Omnera is designed mobile-first. The feed experience is optimized for single-hand use and fast decision-making.
-</Info>
-
-<Warning>
-  Perpetual futures involve leverage and carry significant risk of loss. Only trade with capital you can afford to lose.
-</Warning>
-
-<Warning>
-  Prediction market features are available where legally permitted. Users are responsible for ensuring compliance with local laws and regulations before participating.
-</Warning>
+<Card title="Pre-Trade Intelligence" icon="arrow-right" href="/products/pre-trade-intelligence">
+  Learn what the feed shows before you execute.
+</Card>

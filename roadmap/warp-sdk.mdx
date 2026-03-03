@@ -1,41 +1,17 @@
 ---
-title: "Warp SDK"
-description: "Embed Omnera's cross-chain execution in your app"
+title: Developer SDK
+description: Integrate cross-chain execution into third-party applications.
 ---
 
-## Build With Omnera
+# Developer SDK
 
-The Warp SDK lets partners integrate Omnera's cross-chain execution capabilities directly into their applications. Offer your users seamless multi-chain trading without building bridge infrastructure.
+The Omnera developer SDK will allow third-party applications to integrate cross-chain execution capabilities directly. Partners can offer multi-chain trading to their users without building or maintaining bridge infrastructure.
 
-<Info>
-  **Target Launch**: 2026 (following expanded chain support)
-</Info>
+The SDK is planned for release following expanded chain support. A specific timeline has not been announced.
 
-## Why Integrate
+## Capabilities
 
-<CardGroup cols={2}>
-  <Card title="Multi-Chain Access" icon="link">
-    Let users trade across chains from your interface.
-  </Card>
-  <Card title="No Infrastructure" icon="server">
-    We handle the complexity. You get the capability.
-  </Card>
-  <Card title="MEV Protection" icon="shield">
-    Every trade through Warp SDK gets MEV protection by default.
-  </Card>
-  <Card title="Revenue Share" icon="coins">
-    Earn from volume routed through your integration.
-  </Card>
-</CardGroup>
-
-## SDK Capabilities
-
-| Feature | Description |
-|---------|-------------|
-| Intent Submission | Submit cross-chain intents for your users |
-| Quote Aggregation | Real-time quotes across all routes |
-| Status Tracking | Monitor execution in real-time |
-| Webhooks | Callbacks on completion |
+The SDK exposes intent submission, quote aggregation across available routes, real-time execution status tracking, and webhook callbacks on trade completion. Partners submit cross-chain intents on behalf of their users. The same atomic execution guarantees that apply to direct Omnera trades apply to SDK-routed trades.
 
 ## Code Examples
 
@@ -70,28 +46,12 @@ const status = await warp.getIntentStatus(intent.id);
 
 ## Use Cases
 
-<AccordionGroup>
-  <Accordion title="DEX Aggregators" icon="shuffle">
-    Add cross-chain swaps with one integration.
-  </Accordion>
-  <Accordion title="Wallets" icon="wallet">
-    Let users manage and trade assets across chains seamlessly.
-  </Accordion>
-  <Accordion title="DeFi Protocols" icon="landmark">
-    Enable cross-chain deposits and withdrawals.
-  </Accordion>
-</AccordionGroup>
+The SDK is designed for DEX aggregators that want to add cross-chain swap capability, wallet applications that want to enable cross-chain asset management, and DeFi protocols that want to support cross-chain deposits and withdrawals.
 
-## Partnership Tiers
+## Partnership
 
-| Tier | Monthly Volume | Revenue Share |
-|------|----------------|---------------|
-| Standard | < $1M | 10% |
-| Pro | $1-10M | 15% |
-| Enterprise | > $10M | Custom |
+Revenue share is available to SDK partners based on volume routed through their integration. Contact partnerships@omnera.trade to discuss integration.
 
-## Get Started
-
-<Card title="Apply for Partnership" icon="handshake" href="mailto:partnerships@omnera.trade">
-  Contact us to discuss integration.
+<Card title="Apply for Partnership" icon="arrow-right" href="mailto:partnerships@omnera.trade">
+  Contact the partnerships team.
 </Card>

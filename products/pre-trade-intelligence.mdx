@@ -1,88 +1,32 @@
 ---
-title: "Pre-Trade Intelligence"
-description: "Context before you execute. Not after."
+title: Pre-Trade Intelligence
+description: Context at the moment of decision.
 ---
 
-## What It Does
+# Pre-Trade Intelligence
 
-Before you execute a trade, Omnera surfaces relevant context. On-chain data. Historical price behavior. Risk signals. Not a recommendation. Just information.
+Context at the moment of decision.
 
-When you tap an opportunity in the feed, you see context in seconds.
+Execution without context is speculation on incomplete information. The standard trading interface presents price, volume, and order book depth at the moment a user is deciding whether to enter a position. These inputs describe current market state. They do not describe whether current market state is anomalous, whether similar conditions have historically preceded reversals, or whether the asset exhibits behavioral patterns that are relevant to the user's observed trading style.
 
-<CardGroup cols={2}>
-  <Card title="Contract Safety" icon="shield-check">
-    Honeypot detection, mint authority, freeze authority, LP status. Instant risk assessment.
-  </Card>
-  <Card title="Creator History" icon="user-secret">
-    What else has this wallet deployed? Track record of previous tokens.
-  </Card>
-  <Card title="Wallet Clusters" icon="users">
-    Connected addresses, concentration analysis, and holder distribution.
-  </Card>
-  <Card title="Social Signals" icon="hashtag">
-    Social media mentions, community activity, and momentum indicators.
-  </Card>
-  <Card title="Pattern Matching" icon="magnifying-glass-chart">
-    How does this token compare to similar launches? What happened to them?
-  </Card>
-  <Card title="Risk Summary" icon="robot">
-    Plain English summary. What looks normal. What looks unusual. What to watch.
-  </Card>
-</CardGroup>
+Omnera surfaces this context before execution occurs.
 
-## Built Into the Feed
+## Signal Layer
 
-Pre-trade intelligence is not a separate product. It is embedded directly in the feed flow.
+At the point of decision, Omnera presents a synthesis of on-chain behavioral data and historical price pattern analysis for the opportunity in view. This includes recent wallet activity patterns among significant holders, historical volatility distribution across comparable market conditions, and any anomalous on-chain signals that diverge from the asset's baseline behavior.
 
-1. You see an opportunity in your feed
-2. You tap it
-3. Context loads in seconds
-4. You review the information
-5. You decide whether to execute
+The signal layer does not generate a recommendation. It presents structured information that a trader would otherwise need to source from multiple external tools, manually, before the opportunity window closes.
 
-No tab switching. No context loss. The information appears when you need it. Before you trade.
+## Informational Scope
 
-## Risk Indicators
+Pre-trade intelligence covers three categories of signal. On-chain data reflects observable blockchain activity associated with the asset. Historical pattern data reflects how the asset has behaved under comparable market conditions in the past. Behavioral context reflects how the current opportunity compares to opportunities the user has previously engaged with, based on their feed profile.
 
-<AccordionGroup>
-  <Accordion title="Green: Lower Risk" icon="circle-check">
-    Contract verified, liquidity locked, healthy holder distribution, creator has positive history.
-  </Accordion>
-  <Accordion title="Yellow: Caution" icon="triangle-exclamation">
-    Concentrated holdings, unlocked liquidity, limited history, or mixed signals.
-  </Accordion>
-  <Accordion title="Red: High Risk" icon="circle-xmark">
-    Honeypot indicators, suspicious wallet activity, creator history of failed tokens.
-  </Accordion>
-</AccordionGroup>
+No signal category constitutes a prediction of future price movement. Markets are non-stationary. Historical patterns are descriptive, not prescriptive.
 
-## Transaction Protection
+## Disclaimer
 
-Every trade executed through Omnera is protected by default.
+Pre-trade intelligence is informational only. It does not constitute financial advice. Past market behavior does not guarantee future results. All trading decisions are made solely by the user.
 
-Your transaction does not enter the public mempool. This reduces the risk of front-running and sandwich attacks.
-
-<CardGroup cols={2}>
-  <Card title="Reduced Front-Running Risk" icon="person-running">
-    Your trade is not visible in the public mempool before execution.
-  </Card>
-  <Card title="Sandwich Attack Protection" icon="burger">
-    Your transaction is less likely to be wrapped by predatory trades.
-  </Card>
-  <Card title="Always On" icon="shield">
-    Transaction protection is enabled by default. No toggles. No extra cost.
-  </Card>
-  <Card title="Transparent Fees" icon="piggy-bank">
-    You see the fee before you trade. No hidden costs.
-  </Card>
-</CardGroup>
-
-## Fewer Tabs. Faster Decisions.
-
-Without Omnera, researching a token means opening multiple tools and switching between them. That takes time. Context gets lost.
-
-With Omnera, the information you need is in one place. One feed. One tap. Seconds.
-
-<Warning>
-  Pre-trade intelligence is informational only. It does not constitute financial advice. Past market behavior does not guarantee future results.
-</Warning>
+<Card title="Cross-Chain Execution" icon="arrow-right" href="/products/cross-chain-execution">
+  Learn how Omnera executes across chains.
+</Card>
