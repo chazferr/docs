@@ -3,6 +3,8 @@ title: "Cross-Chain Execution"
 description: "How Omnera executes trades across multiple chains from a single interface."
 ---
 
+# Cross-Chain Execution
+
 ## Overview
 
 Omnera supports execution across multiple blockchain networks from a single wallet connection. The trader does not need to bridge assets, switch networks, or manage multiple wallet connections. When the execution router identifies the optimal venue for a trade, it handles the cross-chain mechanics transparently.
@@ -11,7 +13,7 @@ Omnera supports execution across multiple blockchain networks from a single wall
 
 | Chain | Asset Types | Execution |
 |-------|------------|-----------|
-| Solana | Spot tokens, SPL assets | Direct AMM and DEX aggregator routing |
+| Solana | Spot tokens, SPL assets | Direct liquidity venue and aggregator routing |
 | Ethereum L2s | Spot tokens, DeFi positions | Bridged execution with atomic settlement |
 | Additional chains | Expanding | See [Roadmap](/roadmap/overview) for upcoming integrations |
 
@@ -20,7 +22,7 @@ Omnera supports execution across multiple blockchain networks from a single wall
 When a trader initiates a trade on an asset that resides on a different chain from their primary wallet:
 
 1. **The router evaluates cross-chain paths.** Multiple bridging options may exist. The router selects based on speed, cost, and reliability.
-2. **A transaction bundle is constructed.** The bridge operation, the swap or order placement, and any intermediate steps are composed into a single transaction flow.
+2. **A transaction bundle is constructed.** The bridge operation, the order placement, and any intermediate steps are composed into a single transaction flow.
 3. **The trader reviews and signs.** The complete execution path is presented before confirmation. One signature initiates the full sequence.
 4. **Atomic settlement.** The trade settles as a single unit. If any step fails, the entire operation reverts.
 

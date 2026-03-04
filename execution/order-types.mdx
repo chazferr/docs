@@ -3,6 +3,8 @@ title: "Order Types"
 description: "Supported order types across spot, perpetual futures, and prediction markets on Omnera."
 ---
 
+# Order Types
+
 ## Overview
 
 Omnera supports multiple order types across execution venues. The available order types depend on the instrument (spot, perps, or prediction markets) and the capabilities of the underlying venue.
@@ -14,7 +16,7 @@ Omnera supports multiple order types across execution venues. The available orde
 | Market | Execute immediately at the best available price | Fills at current market price. Subject to slippage based on size and liquidity depth. |
 | Limit | Execute at a specified price or better | Rests until the market reaches the target price. May partially fill. |
 
-Spot orders are routed to AMMs or DEX aggregators. For AMM execution, "limit" behavior is approximated through conditional execution — the transaction reverts if the price exceeds the specified threshold.
+Spot orders are routed to on-chain liquidity venues. For automated liquidity pool execution, "limit" behavior is approximated through conditional execution — the transaction reverts if the price exceeds the specified threshold.
 
 ## Perpetual Futures Orders
 

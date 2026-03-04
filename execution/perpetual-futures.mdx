@@ -3,13 +3,15 @@ title: "Perpetual Futures"
 description: "Trade leveraged perpetual futures through Omnera's unified execution surface."
 ---
 
+# Perpetual Futures
+
 ## Overview
 
-Omnera integrates perpetual futures execution directly into the discovery feed. When the system surfaces a perps opportunity — a funding rate divergence, a liquidation cascade, a technical setup on a supported pair — the trader can open a leveraged position without leaving the feed or connecting to a separate exchange.
+Omnera integrates perpetual futures execution directly into the discovery feed. When the system surfaces a perps opportunity — a funding rate divergence, a liquidation cascade, a technical setup on a supported pair — the trader can open a leveraged position without leaving the feed or connecting to a separate protocol.
 
 ## How Perps Work on Omnera
 
-Omnera routes perpetual futures orders to integrated decentralized exchanges. The trader interacts with Omnera's unified interface. The underlying execution occurs on the perps venue with the best available conditions for the specific pair and size.
+Omnera routes perpetual futures orders to integrated on-chain venues. The trader interacts with Omnera's unified interface. The underlying execution occurs on the perps venue with the best available conditions for the specific pair and size.
 
 **Position lifecycle:**
 
@@ -23,7 +25,7 @@ Omnera routes perpetual futures orders to integrated decentralized exchanges. Th
 |-----------|-------------|
 | Leverage | Configurable per-trade. Maximum leverage depends on the underlying venue and pair. |
 | Margin | Cross-margin and isolated margin options, depending on venue support. |
-| Order types | Market, limit, and stop orders. See [Order Types](/exchange/order-types) for details. |
+| Order types | Market, limit, and stop orders. See [Order Types](/execution/order-types) for details. |
 | Funding rate | Perpetual futures use periodic funding payments between longs and shorts. Rates vary by venue and are displayed before execution. |
 
 ## Liquidation
@@ -38,8 +40,8 @@ Liquidation is handled by the underlying perps venue, not by Omnera. The specifi
 
 ## Integrated Venues
 
-Omnera routes perps execution to decentralized exchanges with deep liquidity and robust risk management. Venue selection is automatic based on the pair, size, and current market conditions. The specific venues integrated are listed in the execution confirmation before each trade.
+Omnera routes perps execution to on-chain venues with deep liquidity and robust risk management. Venue selection is automatic based on the pair, size, and current market conditions. The specific venues integrated are listed in the execution confirmation before each trade.
 
 <Note>
-  Omnera does not operate its own perpetual futures exchange. It routes orders to existing decentralized venues. Counterparty risk, funding rates, and liquidation mechanics are determined by the underlying venue.
+  Omnera does not operate its own perpetual futures protocol. It routes orders to existing decentralized venues. Counterparty risk, funding rates, and liquidation mechanics are determined by the underlying venue.
 </Note>

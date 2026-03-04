@@ -3,15 +3,17 @@ title: "Cross-Chain Execution Optimization"
 description: "Research overview of optimal execution routing across fragmented DeFi liquidity venues."
 ---
 
+# Cross-Chain Execution Optimization
+
 *Research overview — Omnera Labs*
 
 ## Abstract
 
-Decentralized finance liquidity is fragmented across chains, protocols, and instrument types. A trader seeking to execute on the best available terms must navigate an increasingly complex landscape of AMMs, orderbook exchanges, bridges, and aggregators. This paper outlines the optimization problem that Omnera's execution router addresses: given a trading intent (asset, direction, size), find the execution path that minimizes cost and settlement time across a multi-chain, multi-venue environment.
+Decentralized finance liquidity is fragmented across chains, protocols, and instrument types. A trader seeking to execute on the best available terms must navigate an increasingly complex landscape of liquidity venues, bridges, and aggregators. This paper outlines the optimization problem that Omnera's execution router addresses: given a trading intent (asset, direction, size), find the execution path that minimizes cost and settlement time across a multi-chain, multi-venue environment.
 
 ## 1. The Fragmentation Problem
 
-As of early 2026, meaningful trading liquidity exists across at least a dozen distinct blockchain networks. Within each chain, liquidity is further fragmented across dozens of decentralized exchanges, each with different fee structures, liquidity profiles, and settlement characteristics.
+As of early 2026, meaningful trading liquidity exists across at least a dozen distinct blockchain networks. Within each chain, liquidity is further fragmented across dozens of on-chain venues, each with different fee structures, liquidity profiles, and settlement characteristics.
 
 For spot trading alone, a single token may have liquidity on Raydium (Solana), Uniswap (Ethereum and L2s), and multiple aggregators. For perpetual futures, venues like Hyperliquid, drift, and others offer the same pair with different spreads, funding rates, and margin models.
 
@@ -21,9 +23,9 @@ The result is that the "best" execution for any given trade is a function of man
 
 Omnera's router evaluates execution paths against a composite cost model:
 
-**Price impact.** The expected slippage given the trade size and the venue's liquidity depth at the target price. For AMMs, this is a deterministic function of pool reserves. For orderbook venues, it depends on current book depth.
+**Price impact.** The expected slippage given the trade size and the venue's liquidity depth at the target price. For automated liquidity pools, this is a deterministic function of pool reserves. For orderbook venues, it depends on current book depth.
 
-**Fee load.** The sum of all fees incurred along the execution path: DEX swap fees, bridge protocol fees, and Omnera's routing fee. A path with lower slippage but higher fees may be more expensive than a path with moderate slippage and minimal fees.
+**Fee load.** The sum of all fees incurred along the execution path: protocol swap fees, bridge protocol fees, and Omnera's routing fee. A path with lower slippage but higher fees may be more expensive than a path with moderate slippage and minimal fees.
 
 **Settlement time.** Cross-chain execution introduces latency. Bridge settlement can take seconds to minutes depending on the bridge protocol and destination chain. The router weights faster settlement paths, particularly for time-sensitive trades.
 
@@ -39,13 +41,13 @@ The router evaluates all viable paths and selects the one with the lowest compos
 
 ## 3. Path Construction
 
-For a same-chain spot trade, the path is straightforward: route through the AMM or aggregator with the best price at the target size.
+For a same-chain spot trade, the path is straightforward: route through the liquidity venue or aggregator with the best price at the target size.
 
 For cross-chain execution, the path becomes a multi-step operation:
 
 1. **Source chain exit.** Convert the trader's held asset into a bridgeable form (if necessary).
 2. **Bridge transit.** Transfer value from the source chain to the destination chain.
-3. **Destination chain entry.** Swap the bridged asset for the target asset on the destination chain.
+3. **Destination chain entry.** Convert the bridged asset into the target asset on the destination chain.
 
 Each step introduces cost and latency. The router's optimization problem is to minimize the total cost across all steps, subject to the constraint that the entire operation settles atomically.
 
@@ -57,7 +59,7 @@ Omnera requires that cross-chain execution paths settle atomically — all steps
 
 **Transaction bundling.** Multi-step operations must be composed into a single logical transaction from the trader's perspective, even if the underlying implementation involves multiple on-chain transactions.
 
-**Conditional execution.** Each step is conditioned on the success of the previous step. If a bridge transfer fails, the subsequent swap is never attempted. If a swap fails, the bridged assets are returned to the source.
+**Conditional execution.** Each step is conditioned on the success of the previous step. If a bridge transfer fails, the subsequent step is never attempted. If execution fails, the bridged assets are returned to the source.
 
 **Timeout handling.** Bridge transfers may take longer than expected. The router sets timeout parameters and reverts the operation if settlement does not complete within the expected window.
 

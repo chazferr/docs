@@ -3,6 +3,8 @@ title: "System Architecture"
 description: "The technical blueprint connecting Omnera's behavioral engine, discovery surface, and execution layer."
 ---
 
+# System Architecture
+
 ## Architectural Overview
 
 Omnera is composed of four interconnected systems that operate in concert to deliver personalized discovery and unified execution. Each system has a distinct responsibility and a clear interface boundary.
@@ -19,7 +21,7 @@ Omnera is composed of four interconnected systems that operate in concert to del
 │  Engine           │  │                               │
 │                   │  │  ┌────────┐ ┌──────┐ ┌─────┐ │
 │  - Event ingestion│  │  │  Spot  │ │Perps │ │Pred │ │
-│  - Profile store  │  │  │  AMMs  │ │ DEXs │ │Mkts │ │
+│  - Profile store  │  │  │  Spot  │ │Perps │ │Pred │ │
 │  - Relevance calc │  │  └────────┘ └──────┘ └─────┘ │
 └────────┬─────────┘  └──────────┬───────────────────┘
          │                       │
@@ -41,7 +43,7 @@ Omnera is composed of four interconnected systems that operate in concert to del
 The market indexer maintains a real-time view of on-chain activity across all supported chains and venues. It ingests:
 
 - Token creation, migration, and listing events
-- Price and volume data from AMMs and orderbook exchanges
+- Price and volume data from liquidity venues across supported chains
 - Funding rates and open interest from perpetual futures venues
 - Outcome pricing and volume from prediction markets
 - Social signal aggregated from public feeds

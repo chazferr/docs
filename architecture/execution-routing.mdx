@@ -3,21 +3,23 @@ title: "Execution Routing"
 description: "How Omnera routes trading intent to the optimal venue across chains and settles atomically."
 ---
 
+# Execution Routing
+
 ## Intent-Based Execution
 
 When a trader acts on an opportunity in the Omnera feed, they express intent — not a specific order on a specific venue. The system translates that intent into the optimal execution path.
 
-This is a fundamental departure from how most trading terminals work. In a conventional terminal, the user must know which chain the asset lives on, which DEX has the deepest liquidity, whether to use a limit or market order, and how to manage slippage. In Omnera, the user expresses what they want to do. The system determines how to do it.
+This is a fundamental departure from how most crypto platforms work. In a conventional interface, the user must know which chain the asset lives on, which venue has the deepest liquidity, whether to use a limit or market order, and how to manage slippage. In Omnera, the user expresses what they want to do. The system determines how to do it.
 
 ## Routing Logic
 
 The execution router evaluates each trading intent against a set of real-time parameters:
 
-**Venue selection.** For any given asset, multiple execution venues may be available — an AMM on Solana, an orderbook on a perps exchange, a prediction market on an L2. The router evaluates each venue on three axes: available liquidity at the intended size, expected slippage, and settlement time. The venue with the best composite score receives the order.
+**Venue selection.** For any given asset, multiple execution venues may be available — a liquidity venue on Solana, an orderbook on a perps protocol, a prediction market on an L2. The router evaluates each venue on three axes: available liquidity at the intended size, expected slippage, and settlement time. The venue with the best composite score receives the order.
 
-**Chain routing.** If the optimal venue exists on a different chain from the trader's current wallet position, the router handles the cross-chain movement. The trader does not bridge assets manually. The system constructs the bridging, swap, and settlement steps as a single atomic operation.
+**Chain routing.** If the optimal venue exists on a different chain from the trader's current wallet position, the router handles the cross-chain movement. The trader does not bridge assets manually. The system constructs the bridging and settlement steps as a single atomic operation.
 
-**Order construction.** Based on the asset type and venue, the router constructs the appropriate order type. A spot purchase on an AMM requires different parameters than a perpetual futures position on an orderbook exchange. The router abstracts this complexity — the trader sees a unified execution interface regardless of the underlying venue mechanics.
+**Order construction.** Based on the asset type and venue, the router constructs the appropriate order type. A spot purchase on a liquidity pool requires different parameters than a perpetual futures position on an orderbook protocol. The router abstracts this complexity — the trader sees a unified execution interface regardless of the underlying venue mechanics.
 
 ## Atomic Settlement
 
@@ -35,7 +37,7 @@ The router currently supports three categories of execution:
 
 | Type | Description | Venues |
 |------|-------------|--------|
-| Spot | Direct token purchase or sale at market or limit price | AMMs and DEX aggregators across supported chains |
+| Spot | Direct token purchase or sale at market or limit price | Liquidity venues and aggregators across supported chains |
 | Perpetual Futures | Leveraged long or short positions on supported pairs | Integrated perps venues with cross-margin support |
 | Prediction Markets | Binary or multi-outcome position entry | Supported prediction market protocols |
 

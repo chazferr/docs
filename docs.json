@@ -41,13 +41,13 @@
             ]
           },
           {
-            "group": "Omnera Exchange",
+            "group": "Execution",
             "pages": [
-              "exchange/cross-chain-execution",
-              "exchange/perpetual-futures",
-              "exchange/prediction-markets",
-              "exchange/order-types",
-              "exchange/fee-structure"
+              "execution/cross-chain-execution",
+              "execution/perpetual-futures",
+              "execution/prediction-markets",
+              "execution/order-types",
+              "execution/fee-structure"
             ]
           },
           {
